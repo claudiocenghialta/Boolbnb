@@ -46,6 +46,8 @@ class ApartmentsTableSeeder extends Seeder
               );
 
 
+
+
         }
 
     }
