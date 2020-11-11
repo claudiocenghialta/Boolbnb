@@ -18,7 +18,7 @@ class OptionalsTableSeeder extends Seeder
           'Posto Macchina',
           'Portineria',
           'Sauna',
-          'Vista mare'
+          'Vista Mare'
         ];
 
         for ($i=0; $i < count($optional); $i++) {
