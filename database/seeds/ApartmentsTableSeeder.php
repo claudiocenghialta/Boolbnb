@@ -2,6 +2,7 @@
 
 use App\Apartment;
 use App\User;
+use App\Optional;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -17,6 +18,9 @@ class ApartmentsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
       $usersCount = count(User::all()->toArray()) - 1;
+      $optionalsCount = count(Optional::all()->toArray()) - 1;
+      // Prendo tutti gli optional per collegarsi all appartamento
+      $optional = Optional::all();
 
         for ($i=0; $i < 10; $i++) {
             $newApartment = new Apartment;
@@ -34,6 +38,14 @@ class ApartmentsTableSeeder extends Seeder
             $newApartment->user_id = rand(1, $usersCount);
 
             $newApartment->save();
+
+
+            // Per popolare tabella ponte
+            $newApartment->optionals()->attach(
+                  $optional->random(rand(1, $optionalsCount))->pluck('id')->toArray()
+              );
+
+
         }
 
     }
