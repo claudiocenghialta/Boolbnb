@@ -49,7 +49,7 @@ class ApartmentController extends Controller
         'numero_stanze' => 'required|integer|min:1|max:20',
         'numero_letti' => 'required|integer|min:1|max:40',
         'numero_bagni' => 'required|integer|min:1|max:20',
-        'mq' => 'required|integer|min:40|max:1000',
+        'mq' => 'integer|min:40|max:1000',
         'indirizzo' => 'required|min:5|max:255'
       ]);
       $data['user_id'] = Auth::id();
