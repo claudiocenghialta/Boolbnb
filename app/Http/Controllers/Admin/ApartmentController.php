@@ -42,11 +42,16 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
       $data = $request->all();
-      //aggiunta controlli
-      // $request->validate([
-      //   'title' => 'required|min:5|max:100',
-      //   'body' => 'required|min:5|max:500'
-      // ]);
+      // aggiunta controlli
+      $request->validate([
+        'titolo' => 'required|min:5|max:100',
+        'descrizione' => 'required|min:10|max:500',
+        'numero_stanze' => 'required|integer|min:1|max:20',
+        'numero_letti' => 'required|integer|min:1|max:40',
+        'numero_bagni' => 'required|integer|min:1|max:20',
+        'mq' => 'required|integer|min:40|max:1000',
+        'indirizzo' => 'required|min:5|max:255'
+      ]);
       $data['user_id'] = Auth::id();
       $data['slug']=Str::slug($data['titolo'],'-');
       //nuova istanza
