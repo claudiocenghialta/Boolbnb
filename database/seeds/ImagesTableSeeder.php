@@ -16,7 +16,7 @@ class ImagesTableSeeder extends Seeder
     {
         //aggiunto provider  Picsum.photos "https://github.com/morawskim/faker-images" peché zaninotto non si aggiorna!!!!!
          $faker->addProvider(new \Mmo\Faker\PicsumProvider($faker));
-         $apartmentCount = count(Apartment::all()->toArray()) - 1;
+         $apartmentCount = count(Apartment::all()->toArray());
 
 
 

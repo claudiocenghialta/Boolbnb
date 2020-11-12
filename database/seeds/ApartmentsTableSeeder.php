@@ -17,8 +17,8 @@ class ApartmentsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      $usersCount = count(User::all()->toArray()) - 1;
-      $optionalsCount = count(Optional::all()->toArray()) - 1;
+      $usersCount = count(User::all()->toArray());
+      $optionalsCount = count(Optional::all()->toArray());
       // Prendo tutti gli optional per collegarsi all appartamento
       $optional = Optional::all();
 

@@ -17,8 +17,8 @@ class MessagesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      $usersCount = count(User::all()->toArray()) - 1;
-      $apartmentCount = count(Apartment::all()->toArray()) - 1;
+      $usersCount = count(User::all()->toArray());
+      $apartmentCount = count(Apartment::all()->toArray());
 
         for ($i=0; $i < 10; $i++) {
             $newMessage = new Message;
@@ -31,7 +31,7 @@ class MessagesTableSeeder extends Seeder
               $user_id = $apartment->user_id;
             }
             while ($newMessage->user_id == $user_id);
-            
+
             $newMessage->save();
         }
 
