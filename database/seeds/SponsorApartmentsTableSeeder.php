@@ -5,6 +5,7 @@ use App\Apartment;
 use App\Sponsor;
 use App\SponsorApartment;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
 
 class SponsorApartmentsTableSeeder extends Seeder
 {
@@ -15,18 +16,25 @@ class SponsorApartmentsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $apartmentCount = count(Apartment::all()->toArray()) - 1;
-        $sponsorCount = count(Sponsor::all()->toArray()) - 1;
+        $apartmentCount = count(Apartment::all()->toArray());
+        $sponsorCount = count(Sponsor::all()->toArray());
 
         for ($i=0; $i < $apartmentCount; $i++) {
             $newSponsorApartment = new SponsorApartment;
             $newSponsorApartment->apartment_id = rand(1,$apartmentCount);
             $newSponsorApartment->sponsor_id = rand(1,$sponsorCount);
-            $newSponsorApartment->data_inizio = $faker->DateTime();
             $sponsor = Sponsor::find($newSponsorApartment->sponsor_id);
             $sponsorDurata = $sponsor->durata;
-            //da mettere a posto
-            $newSponsorApartment->data_fine = $newSponsorApartment->data_inizio->add(new DateInterval("PT{$sponsorDurata}H"));
+            // $newSponsorApartment->data_inizio = $faker->DateTime();
+
+            //date fixed
+            $newSponsorApartment->data_inizio = Carbon::now();
+
+            $now = Carbon::now();
+
+            $end = $now->addHours($sponsorDurata);
+
+            $newSponsorApartment->data_fine = $end;
 
             $newSponsorApartment->save();
 
@@ -34,6 +42,3 @@ class SponsorApartmentsTableSeeder extends Seeder
         }
     }
 }
-// $now = new DateTime(); //current date/time
-// $now->add(new DateInterval("PT{$hours}H"));
-// $new_time = $now->format('Y-m-d H:i:s');
