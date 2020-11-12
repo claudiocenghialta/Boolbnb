@@ -19,3 +19,10 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
+Auth::routes();
+// aggiunta prefisso per cartella admin
+Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function () {
+  Route::get('/home', 'HomeController@index')->name('home');
+  // Route::resource('posts', 'PostController');
+});

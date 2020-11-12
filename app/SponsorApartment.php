@@ -10,6 +10,8 @@ class SponsorApartment extends Model
       'sponsor_id', 'apartment_id', 'data_inizio', 'data_fine'
   ];
 
+  public $timestamps = false;
+  
   public function apartment()
   {
     return $this->belongsTo('App\Apartment');
