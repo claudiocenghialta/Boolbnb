@@ -24,8 +24,8 @@
       <input type="number" name="numero_letti" placeholder="Inserisci il numero_letti">
     <label for="numero_bagni">N Bagni:</label>
       <input type="number" name="numero_bagni" placeholder="Inserisci il numero_bagni">
-    <label for="mq">Mq:</label>
-      <input type="number" name="mq" placeholder="Inserisci il mq">
+    <label for="mq">Metri Quadrati:</label>
+      <input type="number" name="mq" placeholder="Inserisci i metri Quadrati">
     {{-- fare check con algolia --}}
     <label for="indirizzo">Indirizzo:</label>
       <input type="text" name="indirizzo" placeholder="Inserisci il indirizzo">

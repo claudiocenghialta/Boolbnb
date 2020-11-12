@@ -30,11 +30,11 @@ class SponsorApartmentsTableSeeder extends Seeder
             //date fixed
             $newSponsorApartment->data_inizio = Carbon::now();
 
-            $now = Carbon::now();
+            $ora = Carbon::now();
 
-            $end = $now->addHours($sponsorDurata);
+            $fine = $ora->addHours($sponsorDurata);
 
-            $newSponsorApartment->data_fine = $end;
+            $newSponsorApartment->data_fine = $fine;
 
             $newSponsorApartment->save();
 

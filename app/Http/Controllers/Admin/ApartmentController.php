@@ -49,11 +49,11 @@ class ApartmentController extends Controller
         'numero_stanze' => 'required|integer|min:1|max:20',
         'numero_letti' => 'required|integer|min:1|max:40',
         'numero_bagni' => 'required|integer|min:1|max:20',
-        'mq' => 'integer|min:40|max:1000',
+        'mq' => 'nullable|integer|min:15|max:1000',
         'indirizzo' => 'required|min:5|max:255'
       ]);
       $data['user_id'] = Auth::id();
-      $data['slug']=Str::slug($data['titolo'],'-');
+      $data['slug']= Str::finish(Str::slug($data['titolo'],'-'), $data['user_id']);
       //nuova istanza
       $newApartment = New Apartment;
       //get imgs to put in public folder images
