@@ -14,8 +14,8 @@
   @method('POST')
     <label for="titolo">Titolo:</label>
       <input type="text" name="titolo" placeholder="Inserisci il titolo">
-    {{-- <label for="img">Immagine:</label>
-      <input type="file" name="img" accept="image/*"> --}}
+    <label for="img">Immagine di copertina</label>
+      <input type="file" name="img" accept="image/*">
     <label for="descrizione">Descrizione:</label>
       <textarea name="descrizione" rows="8" cols="80" placeholder="Inserisci il testo"></textarea>
     <label for="numero_stanze">N Stanze:</label>

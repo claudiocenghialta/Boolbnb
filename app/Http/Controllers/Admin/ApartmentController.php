@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Apartment;
 use App\Optional;
+use App\Image;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -59,21 +61,42 @@ class ApartmentController extends Controller
       $data['slug']= Str::finish(Str::slug($data['titolo'],'-'),rand(1,10000));
       //nuova istanza
       $newApartment = New Apartment;
+
       //get imgs to put in public folder images
-      // if (!empty($data['img'])) {
-      //   $data['img'] = Storage::disk('public')->put('images',$data['img']);
-      // }
+
       //popolo
       $newApartment->fill($data);
+
       //salvo
       $saved = $newApartment->save();
-      //collego i tags
+
+      if (!empty($data['img'])) {
+        // salviamo l'img inserita nel form nella cartella storage/app/public/images
+        $data['img'] = Storage::disk('public')->put('images',$data['img']);
+        // creiamo una nuova istanza della classe images
+        $newImage = New Image;
+        // Compiliamo i dati della colonne immagine e apartment_id
+        $newImage->immagine = $data['img'];
+        $newImage->apartment_id = $newApartment->id;
+        // Salviamo l'immagine nel database
+        $newImage->save();
+      }
+
       $newApartment->optionals()->attach($data['optionals']);
+      // dd($data['img']);
+      // $images= Image::where('apartment_id', $newApartment->id)->get();
+
+      // dd($images);
+
 
       if ($saved) {
         return redirect()->route('apartments.show', $newApartment);
       }
   }
+
+
+
+
 
 
     /**
@@ -86,7 +109,9 @@ class ApartmentController extends Controller
     {
         // $apartment = Apartment::find($id);
         $optionals = Optional::all();
-        return view('admin.show',compact('apartment', 'optionals'));
+        $images= Image::where('apartment_id', $apartment->id)->get();
+        // $images= Image::where('apartment_id', Apartment::id())->get();
+        return view('admin.show',compact('apartment', 'optionals', 'images'));
     }
 
     /**
