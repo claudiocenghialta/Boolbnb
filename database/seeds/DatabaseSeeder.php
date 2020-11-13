@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
           ImagesTableSeeder::class,
           SponsorsTableSeeder::class,
           SponsorApartmentsTableSeeder::class,
+          VisitsTableSeeder::class,
           ]);
     }
 }

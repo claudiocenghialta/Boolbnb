@@ -34,4 +34,9 @@ class Apartment extends Model
   {
     return $this->hasMany('App\SponsorApartment');
   }
+
+  public function visits()
+  {
+    return $this->hasMany('App\Visit');
+  }
 }

@@ -14,6 +14,7 @@
       {{ session('status')}}
     </div>
   @endif
+  {{-- INSERIRE CARDS X APPARTAMENTI --}}
   <table class="table mx-auto col-5">
     <thead class="thead-light">
       <tr>
