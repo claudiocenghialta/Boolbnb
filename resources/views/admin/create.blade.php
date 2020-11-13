@@ -29,6 +29,10 @@
     {{-- fare check con algolia --}}
     <label for="indirizzo">Indirizzo:</label>
       <input type="text" name="indirizzo" placeholder="Inserisci il indirizzo">
+      @foreach ($optionals as $optional)
+         <label for="optional">{{$optional->nome}}</label>
+         <input type="checkbox" name="optionals[]" value="{{$optional->id}}">
+     @endforeach
 
 
     <input type="submit"class="btn btn-primary" value="Invia">

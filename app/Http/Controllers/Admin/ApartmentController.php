@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Optional;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $optionals = Optional::all();
+        return view('admin.create',compact('optionals'));
     }
 
     /**
@@ -54,7 +56,7 @@ class ApartmentController extends Controller
         'indirizzo' => 'required|min:5|max:255'
       ]);
       $data['user_id'] = Auth::id();
-      $data['slug']= Str::finish(Str::slug($data['titolo'],'-'), $data['user_id']);
+      $data['slug']= Str::finish(Str::slug($data['titolo'],'-'),rand(1,10000));
       //nuova istanza
       $newApartment = New Apartment;
       //get imgs to put in public folder images
@@ -66,10 +68,10 @@ class ApartmentController extends Controller
       //salvo
       $saved = $newApartment->save();
       //collego i tags
-      // $newApartment->tags()->attach($data['tags']);
+      $newApartment->optionals()->attach($data['optionals']);
 
       if ($saved) {
-        return redirect()->route('apartments.show');
+        return redirect()->route('apartments.show', $newApartment);
       }
   }
 
@@ -83,7 +85,8 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         // $apartment = Apartment::find($id);
-        return view('admin.show',compact('apartment'));
+        $optionals = Optional::all();
+        return view('admin.show',compact('apartment', 'optionals'));
     }
 
     /**
@@ -94,7 +97,8 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        return view('admin.edit',compact('apartment'));
+        $optionals = Optional::all();
+        return view('admin.edit',compact('apartment','optionals'));
     }
 
     /**
@@ -119,7 +123,7 @@ class ApartmentController extends Controller
           'indirizzo' => 'required|min:5|max:255'
         ]);
         $data['user_id'] = Auth::id();
-        $data['slug']= Str::finish(Str::slug($data['titolo'],'-'), $data['user_id']);
+        $data['slug']= Str::finish(Str::slug($data['titolo'],'-'), rand(1,10000));
         //nuova istanza
         $data['updated_at']=Carbon::now('Europe/Rome');
         $saved = $apartment->update($data);
@@ -131,10 +135,14 @@ class ApartmentController extends Controller
         // }
         //popolo
         // $newApartment->fill($data);
-        //salvo
-        // $saved = $newApartment->save();
-        //collego i tags
-        // $newApartment->tags()->attach($data['tags']);
+
+        if(!empty($data['optionals'])){
+        $apartment->optionals()->sync($data['optionals']);
+        }else {
+        $apartment->optionals()->detach();
+        }
+
+        // $apartment->optionals()->attach($data['optionals']);
 
         if ($saved) {
           return redirect()->route('apartments.show', $apartment->id)->with('status', "Hai modificato l'appartamento: " . $vecchioTitolo);
@@ -150,6 +158,6 @@ class ApartmentController extends Controller
     public function destroy(Apartment $apartment)
     {
       $apartment->delete();
-        return redirect()->route('apartments.index')->with('status',"Hai cancellato l'appartamento ". $apartment->id);
+        return redirect()->route('apartments.index')->with('status',"Hai cancellato l'appartamento: ". $apartment->titolo);
     }
 }

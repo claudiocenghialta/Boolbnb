@@ -13,6 +13,10 @@
 <p>N Bagni:{{$apartment->numero_bagni}}</p>
 <p>Metri Quadrati:{{$apartment->mq}}</p>
 <p>Indirizzo:{{$apartment->indirizzo}}</p>
+@foreach ($optionals as $optional)
+   <label for="optional">{{$optional->nome}}</label>
+   <input type="checkbox" name="optionals[]" value="{{$optional->id}}"{{($apartment->optionals->contains($optional->id) ? 'checked' : '')}} disabled>
+@endforeach
 <a href="{{ route('apartments.edit', $apartment->id )}}">Edit</a>
 <form action="{{ route('apartments.destroy', $apartment->id )}}" method="post">
   @csrf

@@ -35,7 +35,7 @@ class ApartmentsTableSeeder extends Seeder
             // $newApartment->attivo = true;
             // $newApartment->imma = $faker->imageUrl(640,400);
             $newApartment->user_id = rand(1, $usersCount);
-            $newApartment->slug = Str::finish(Str::slug($newApartment->titolo), $newApartment->user_id);
+            $newApartment->slug = Str::finish(Str::slug($newApartment->titolo), rand(1,10000));
 
 
             $newApartment->save();
