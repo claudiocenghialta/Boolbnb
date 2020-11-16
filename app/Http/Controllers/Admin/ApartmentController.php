@@ -70,16 +70,18 @@ class ApartmentController extends Controller
       //salvo
       $saved = $newApartment->save();
 
-      if (!empty($data['img'])) {
-        // salviamo l'img inserita nel form nella cartella storage/app/public/images
-        $data['img'] = Storage::disk('public')->put('images',$data['img']);
-        // creiamo una nuova istanza della classe images
-        $newImage = New Image;
-        // Compiliamo i dati della colonne immagine e apartment_id
-        $newImage->immagine = $data['img'];
-        $newImage->apartment_id = $newApartment->id;
-        // Salviamo l'immagine nel database
-        $newImage->save();
+      for ($i=0; $i <5 ; $i++) {
+          if (!empty($data['img'.$i])) {
+            // salviamo l'img inserita nel form nella cartella storage/app/public/images
+            $data['img'.$i] = Storage::disk('public')->put('images',$data['img'.$i]);
+            // creiamo una nuova istanza della classe images
+            $newImage = New Image;
+            // Compiliamo i dati della colonne immagine e apartment_id
+            $newImage->immagine = $data['img'.$i];
+            $newImage->apartment_id = $newApartment->id;
+            // Salviamo l'immagine nel database
+            $newImage->save();
+          }
       }
 
       $newApartment->optionals()->attach($data['optionals']);
@@ -124,7 +126,9 @@ class ApartmentController extends Controller
     {
         $optionals = Optional::all();
         $images= Image::where('apartment_id', $apartment->id)->get();
-        return view('admin.edit',compact('apartment','optionals', 'images'));
+        $numImages = count(Image::where('apartment_id',$apartment->id)->get());
+        $immaginiRimanenti= 5 - $numImages;
+        return view('admin.edit',compact('apartment','optionals', 'images', 'immaginiRimanenti'));
     }
 
     /**
@@ -153,18 +157,32 @@ class ApartmentController extends Controller
         //nuova istanza
         $data['updated_at']=Carbon::now('Europe/Rome');
         $saved = $apartment->update($data);
-
-        if (!empty($data['img'])) {
-          // salviamo l'img inserita nel form nella cartella storage/app/public/images
-          $data['img'] = Storage::disk('public')->put('images',$data['img']);
-          // creiamo una nuova istanza della classe images
-          $newImage = New Image;
-          // Compiliamo i dati della colonne immagine e apartment_id
-          $newImage->immagine = $data['img'];
-          $newImage->apartment_id = $newApartment->id;
-          // Salviamo l'immagine nel database
-          $newImage->save();
+        $numImages = count(Image::where('apartment_id',$apartment->id)->get());
+        $immaginiRimanenti = 5 - $numImages;
+        for ($i=0; $i <= $immaginiRimanenti ; $i++) {
+            if (!empty($data['img'.$i])) {
+              // salviamo l'img inserita nel form nella cartella storage/app/public/images
+              $data['img'.$i] = Storage::disk('public')->put('images',$data['img'.$i]);
+              // creiamo una nuova istanza della classe images
+              $newImage = New Image;
+              // Compiliamo i dati della colonne immagine e apartment_id
+              $newImage->immagine = $data['img'.$i];
+              $newImage->apartment_id = $apartment->id;
+              // Salviamo l'immagine nel database
+              $newImage->save();
+            }
         }
+        // if (!empty($data['img'])) {
+        //   // salviamo l'img inserita nel form nella cartella storage/app/public/images
+        //   $data['img'] = Storage::disk('public')->put('images',$data['img']);
+        //   // creiamo una nuova istanza della classe images
+        //   $newImage = New Image;
+        //   // Compiliamo i dati della colonne immagine e apartment_id
+        //   $newImage->immagine = $data['img'];
+        //   $newImage->apartment_id = $apartment->id;
+        //   // Salviamo l'immagine nel database
+        //   $newImage->save();
+        // }
 
 
 // IMAGESCONTROLLER SOLO DESTROY PER ELIMINARE LE IMMAGINI DALLA tabella
@@ -214,5 +232,6 @@ class ApartmentController extends Controller
     {
       $apartment->delete();
         return redirect()->route('apartments.index')->with('status',"Hai cancellato l'appartamento: ". $apartment->titolo);
+
     }
 }

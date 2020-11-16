@@ -14,8 +14,10 @@
   @method('POST')
     <label for="titolo">Titolo:</label>
       <input type="text" name="titolo" placeholder="Inserisci il titolo">
-    <label for="img">Immagine di copertina</label>
-      <input type="file" name="img" accept="image/*">
+      @for ($i=0; $i < 5; $i++)
+          <label for="img{{$i+1}}">Immagine di copertina</label>
+            <input type="file" name="img{{$i+1}}" accept="image/*">
+      @endfor
     <label for="descrizione">Descrizione:</label>
       <textarea name="descrizione" rows="8" cols="80" placeholder="Inserisci il testo"></textarea>
     <label for="numero_stanze">N Stanze:</label>

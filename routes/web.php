@@ -26,4 +26,8 @@ Auth::routes();
 Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function () {
   Route::get('/home', 'HomeController@index')->name('home');
   Route::resource('apartments', 'ApartmentController');
+  // Route::get('apartments/show/{slug}','ApartmentController@show')->name('apartments.slug');
+  Route::resource('images', 'ImageController');
+  // Route::delete('/image/destroy/{image}', 'ImageController@destroy')->name('image.destroy');
+
 });
