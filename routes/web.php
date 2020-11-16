@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,6 +29,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
   Route::resource('apartments', 'ApartmentController');
   // Route::get('apartments/show/{slug}','ApartmentController@show')->name('apartments.slug');
   Route::resource('images', 'ImageController');
+  Route::resource('users', 'UserController');
   // Route::delete('/image/destroy/{image}', 'ImageController@destroy')->name('image.destroy');
 
 });

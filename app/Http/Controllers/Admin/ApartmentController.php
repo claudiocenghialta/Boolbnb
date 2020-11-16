@@ -172,50 +172,12 @@ class ApartmentController extends Controller
               $newImage->save();
             }
         }
-        // if (!empty($data['img'])) {
-        //   // salviamo l'img inserita nel form nella cartella storage/app/public/images
-        //   $data['img'] = Storage::disk('public')->put('images',$data['img']);
-        //   // creiamo una nuova istanza della classe images
-        //   $newImage = New Image;
-        //   // Compiliamo i dati della colonne immagine e apartment_id
-        //   $newImage->immagine = $data['img'];
-        //   $newImage->apartment_id = $apartment->id;
-        //   // Salviamo l'immagine nel database
-        //   $newImage->save();
-        // }
-
-
-// IMAGESCONTROLLER SOLO DESTROY PER ELIMINARE LE IMMAGINI DALLA tabella
-
-// + Storage::disk('public')->delete($post->img);
-
-
-
-        //get imgs to put in public folder images
-        // if (!empty($data['img'])) {
-        //   $data['img'] = Storage::disk('public')->put('images',$data['img']);
-        // }
-        //popolo
-        // $newApartment->fill($data);
-
-
-
-        // if (!empty($data['img'])) {
-        //   if (!empty($post->img)) {
-        //     Storage::disk('public')->delete($post->img);
-        //   }
-        //   $data['img'] = Storage::disk('public')->put('images',$data['img']);
-        // }
-
-
 
         if(!empty($data['optionals'])){
         $apartment->optionals()->sync($data['optionals']);
         }else {
         $apartment->optionals()->detach();
         }
-
-        // $apartment->optionals()->attach($data['optionals']);
 
         if ($saved) {
           return redirect()->route('apartments.show', $apartment->id)->with('status', "Hai modificato l'appartamento: " . $vecchioTitolo);
@@ -230,6 +192,16 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+        $immagini = [];
+
+            $query = Image::where('apartment_id', $apartment->id)->pluck('immagine');
+            if (count($query) != 0) {
+                $immagini = [...$immagini,...$query];
+            }
+            foreach ($immagini as $immagine) {
+                Storage::disk('public')->delete($immagine);
+            }
+
       $apartment->delete();
         return redirect()->route('apartments.index')->with('status',"Hai cancellato l'appartamento: ". $apartment->titolo);
 
