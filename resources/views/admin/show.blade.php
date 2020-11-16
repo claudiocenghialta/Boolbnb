@@ -8,7 +8,7 @@
 <p>Titolo:{{$apartment->titolo}}</p>
 @foreach ($images as $img)
     <img class="img-fluid rounded mx-auto"
-        src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (Storage::url($img->immagine))}}" alt="{{$apartment->titolo}}">
+        src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}" alt="{{$apartment->titolo}}">
 
 @endforeach
 

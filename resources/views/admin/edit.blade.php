@@ -14,8 +14,12 @@
   @method('PATCH')
     <label for="titolo">Titolo:</label>
       <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
-    {{-- <label for="img">Immagine:</label>
-      <input type="file" name="img" accept="image/*"> --}}
+    <label for="img">Immagine di copertina</label>
+      <input type="file" name="img" accept="image/*">
+      @foreach ($images as $img)
+          <img class="img-fluid rounded mx-auto"
+              src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}" alt="{{$apartment->titolo}}">
+      @endforeach
     <label for="descrizione">Descrizione:</label>
       <textarea name="descrizione" rows="8" cols="80"  placeholder="Inserisci il testo">{{$apartment->descrizione}}</textarea>
     <label for="numero_stanze">N Stanze:</label>
