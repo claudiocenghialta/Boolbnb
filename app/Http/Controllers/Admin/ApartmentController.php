@@ -10,6 +10,7 @@ use App\Optional;
 use App\Image;
 use App\User;
 use App\Message;
+use App\Visit;
 use App\Sponsor;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -100,10 +101,6 @@ class ApartmentController extends Controller
   }
 
 
-
-
-
-
     /**
      * Display the specified resource.
      *
@@ -112,7 +109,6 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        // $apartment = Apartment::find($id);
         $user = User::where('id', Auth::id())->get();
         $optionals = Optional::all();
         $sponsors = Sponsor::all();
@@ -121,6 +117,11 @@ class ApartmentController extends Controller
             $proprietario = true;
         } else {
             $proprietario = false;
+            // incremento contatore visite
+            $newVisit = new Visit;
+            $newVisit->apartment_id = $apartment->id;
+            $newVisit->data_visita = Carbon::now();
+            $newVisit->save();
         }
         $messages= Message::where([['apartment_id', $apartment->id],['user_id', Auth::id()]])->get();
         return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages', 'sponsors'));

@@ -24,7 +24,7 @@ class CreateApartmentsTable extends Migration
             $table->smallInteger('mq')->unsigned()->nullable();
             $table->text('indirizzo');
             $table->boolean('attivo')->default(true);
-            $table->integer('numero_visite')->unsigned()->default(0);
+            // $table->integer('numero_visite')->unsigned()->default(0);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
