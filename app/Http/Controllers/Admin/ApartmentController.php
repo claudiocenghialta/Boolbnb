@@ -10,6 +10,7 @@ use App\Optional;
 use App\Image;
 use App\User;
 use App\Message;
+use App\Sponsor;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -114,6 +115,7 @@ class ApartmentController extends Controller
         // $apartment = Apartment::find($id);
         $user = User::where('id', Auth::id())->get();
         $optionals = Optional::all();
+        $sponsors = Sponsor::all();
         $images= Image::where('apartment_id', $apartment->id)->get();
         if (Auth::id() == $apartment->user_id) {
             $proprietario = true;
@@ -121,7 +123,7 @@ class ApartmentController extends Controller
             $proprietario = false;
         }
         $messages= Message::where([['apartment_id', $apartment->id],['user_id', Auth::id()]])->get();
-        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages'));
+        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages', 'sponsors'));
     }
 
     /**
