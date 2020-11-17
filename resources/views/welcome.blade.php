@@ -1,10 +1,24 @@
-@php
-$usersCount = count(User::all()->toArray()) - 1;
-$apartmentCount = count(Apartment::all()->toArray()) - 1;
-$user_id = rand(1, $usersCount);
 
-  $apartment_id = rand(1, $apartmentCount);
-$apartment = Apartment::find($apartment_id);
+@extends('layouts.app')
 
-var_dump($user_id ,$apartment)
-@endphp
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged OUT!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

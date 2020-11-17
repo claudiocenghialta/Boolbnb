@@ -61,6 +61,9 @@
                                     <a class="dropdown-item" href="{{ route('apartments.create') }}">
                                         {{ __('Aggiungi Appartamento') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('users.show',Auth::user()->id ) }}">
+                                        {{ __('Profilo') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

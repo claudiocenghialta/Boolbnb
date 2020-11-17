@@ -15,7 +15,7 @@
     <label for="titolo">Titolo:</label>
       <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
       @if ($immaginiRimanenti != 0)
-          @for ($i=0; $i <= $immaginiRimanenti; $i++)
+          @for ($i=0; $i < $immaginiRimanenti; $i++)
               <label for="img{{$i+1}}">Immagine di copertina</label>
                 <input type="file" name="img{{$i+1}}" accept="image/*">
           @endfor
@@ -43,16 +43,7 @@
         <label for="optional">{{$optional->nome}}</label>
         <input type="checkbox" name="optionals[]" value="{{$optional->id}}"{{($apartment->optionals->contains($optional->id) ? 'checked' : '')}}>
     @endforeach
-
-
     <input type="submit"class="btn btn-primary" value="Salva">
-    <div>
-
-      {{-- @foreach ($tags as $tag)
-        <label for="tag">{{$tag->name}}</label>
-        <input type="checkbox" name="tags[]" value="{{$tag->id}}">
-      @endforeach --}}
-    </div>
   </form>
   @foreach ($images as $img)
       <div class="">
