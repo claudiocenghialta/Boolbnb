@@ -38,10 +38,7 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
         $data= $request->all();
-        // $data['apartment_id'] = $request->apartment_id;
         $request->validate([
           'messaggio' => 'required|min:1|max:255',
         ]);
