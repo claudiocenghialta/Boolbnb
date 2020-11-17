@@ -12,7 +12,7 @@
 @else
     <img class="img-fluid rounded mx-auto"
         src="{{(substr($user->avatar,0,4)=='http') ?($user->avatar) : (asset('storage/'.$user->avatar))}}" alt="{{$user->nome. '-' . $user->cognome}}">
-        <form action="{{ route('images.destroy', $img->id )}}" method="post">
+        <form action="{{ route('images.destroy', $user->avatar )}}" method="post">
           @csrf
           @method('DELETE')
           <button type="submit" name="button" class="btn btn-alert">Delete</button>

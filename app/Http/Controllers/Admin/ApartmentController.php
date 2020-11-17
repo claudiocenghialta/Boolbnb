@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Apartment;
 use App\Optional;
 use App\Image;
+use App\User;
+use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -110,10 +112,16 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         // $apartment = Apartment::find($id);
+        $user = User::where('id', Auth::id())->get();
         $optionals = Optional::all();
         $images= Image::where('apartment_id', $apartment->id)->get();
-        // $images= Image::where('apartment_id', Apartment::id())->get();
-        return view('admin.show',compact('apartment', 'optionals', 'images'));
+        if (Auth::id() == $apartment->user_id) {
+            $proprietario = true;
+        } else {
+            $proprietario = false;
+        }
+        $messages= Message::where([['apartment_id', $apartment->id],['user_id', Auth::id()]])->get();
+        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages'));
     }
 
     /**
