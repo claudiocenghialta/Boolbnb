@@ -78,7 +78,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         $request->validate([
-        'nome' => 'required|min:5|max:100',
+        'nome' => 'required|min:2|max:100',
         'cognome' => 'max:100',
       ]);
 

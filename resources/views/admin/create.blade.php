@@ -14,7 +14,8 @@
   @method('POST')
   <label for="titolo">Titolo:</label>
   <input type="text" name="titolo" placeholder="Inserisci il titolo" value="{{old('titolo')}}">
-  @for ($i=0; $i < 5; $i++) <label for="img{{$i+1}}">Immagine di copertina</label>
+  @for ($i=0; $i < 5; $i++)
+    <label for="img{{$i+1}}">Immagine di copertina</label>
     <input type="file" name="img{{$i+1}}" accept="image/*">
     @endfor
     <label for="descrizione">Descrizione:</label>

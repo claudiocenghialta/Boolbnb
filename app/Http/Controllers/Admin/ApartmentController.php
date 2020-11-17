@@ -88,7 +88,13 @@ class ApartmentController extends Controller
           }
       }
 
-      $newApartment->optionals()->attach($data['optionals']);
+      // $newApartment->optionals()->attach($data['optionals']);
+
+      //se non ci sono optional non va in errore 
+      if (!empty($data['optionals'])) {
+        $newApartment->optionals()->attach($data['optionals']);
+      }
+
       // dd($data['img']);
       // $images= Image::where('apartment_id', $newApartment->id)->get();
 
