@@ -77,6 +77,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
+        $request->validate([
+        'nome' => 'required|min:5|max:100',
+        'cognome' => 'max:100',
+      ]);
+
         if(!empty($data['avatar'])){
             if (!empty($user->avatar)) {
                 Storage::disk('public')->delete($user['avatar']);
@@ -84,8 +89,11 @@ class UserController extends Controller
             $data['avatar'] = Storage::disk('public')->put('images',$data['avatar']);
         }
         $data['updated_at'] = Carbon::now('Europe/Rome');
-        $user->update($data);
-        return redirect()->route('users.show',$user->id)->with('status','Hai modificato correttamente i dati');
+        $saved = $user->update($data);
+        if ($saved) {
+            return redirect()->route('users.show',$user->id)->with('status','Hai modificato correttamente i dati');
+        }
+
 
 
     }
