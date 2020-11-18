@@ -90,7 +90,7 @@ class ApartmentController extends Controller
 
       // $newApartment->optionals()->attach($data['optionals']);
 
-      //se non ci sono optional non va in errore 
+      //se non ci sono optional non va in errore
       if (!empty($data['optionals'])) {
         $newApartment->optionals()->attach($data['optionals']);
       }
@@ -116,6 +116,7 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $user = User::where('id', Auth::id())->get();
+        // dd($user);
         $optionals = Optional::all();
         $sponsors = Sponsor::all();
         $images= Image::where('apartment_id', $apartment->id)->get();

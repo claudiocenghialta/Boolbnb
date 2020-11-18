@@ -40,6 +40,8 @@ class ApartmentController extends Controller
       $sponsors = Sponsor::all();
       $images= Image::where('apartment_id', $apartment->id)->get();
 
+      // dd($images);
+
           $proprietario = false;
           // incremento contatore visite
           $newVisit = new Visit;

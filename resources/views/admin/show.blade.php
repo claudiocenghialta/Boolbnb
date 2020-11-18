@@ -6,12 +6,23 @@
 </div>
 @endif
 <p>Titolo:{{$apartment->titolo}}</p>
-@foreach ($images as $img)
+{{-- prova immagini --}}
+@if ($images->count() == 0)
+<img class="img-fluid rounded mx-auto" src="{{asset('placeholders/placeholder-apartment.jpg')}}" alt="placeholder">
+@else
+  @foreach ($images as $img)
 <img class="img-fluid rounded mx-auto"
-    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
-    alt="{{$apartment->titolo}}">
+    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$$img->immagine))}}"
+    alt="no">
+    @endforeach
+ @endif
+    {{-- fino a qui  --}}
 
-@endforeach
+{{-- @foreach ($images as $img)
+<img class="img-fluid rounded mx-auto"
+    src="{{ empty($img->immagine) ? asset('placeholders/placeholder-apartment.jpg') : ( (substr($img->immagine,0,4)=='http') ? ($img->immagine) : (asset('storage/'.$img->immagine)) )}}"
+    alt="{{$apartment->titolo}}">
+@endforeach --}}
 
 <p>Descrizione:{{$apartment->descrizione}}</p>
 <p>N Stanze:{{$apartment->numero_stanze}}</p>
@@ -60,10 +71,11 @@
 </form>
 {{-- aggiungere statistiche --}}
 
+{{-- Sezione per utente non proprietario --}}
 @else
 <map-show>
 </map-show>
-{{-- Sezione per utente non proprietario --}}
+
 @if (isset($user))
   @foreach ($user as $value)
   <h3>Cronologia Messaggi</h3>
