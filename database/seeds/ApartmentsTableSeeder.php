@@ -31,7 +31,8 @@ class ApartmentsTableSeeder extends Seeder
             $newApartment->numero_bagni = rand(1,4);
             $newApartment->mq = rand(40,300);
             $newApartment->indirizzo = $faker->address();
-            // $newApartment->numero_visite;
+            $newApartment->lat = $faker->latitude($min = -90, $max = 90);
+            $newApartment->lng = $faker->longitude($min = -180, $max = 180);
             // $newApartment->attivo = true;
             // $newApartment->imma = $faker->imageUrl(640,400);
             $newApartment->user_id = rand(1, $usersCount);
