@@ -61,6 +61,8 @@
 {{-- aggiungere statistiche --}}
 
 @else
+<map-show>
+</map-show>
 {{-- Sezione per utente non proprietario --}}
 @if (isset($user))
   @foreach ($user as $value)

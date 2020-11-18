@@ -29,13 +29,17 @@
     <label for="mq">Metri Quadrati:</label>
     <input type="number" name="mq" placeholder="Inserisci i metri Quadrati" value="{{old('mq')}}">
     {{-- fare check con algolia --}}
-    <label for="indirizzo">Indirizzo:</label>
-    <input type="text" name="indirizzo" placeholder="Inserisci il indirizzo" value="{{old('indirizzo')}}">
-    @foreach ($optionals as $optional)
-    <label for="optional">{{$optional->nome}}</label>
-    <input type="checkbox" name="optionals[]" value="{{$optional->id}}">
-    @endforeach
 
+     <label for="indirizzo">Indirizzo:</label>
+    <div id="app">
+        <input-create-indirizzo>
+        </input-create-indirizzo>
+    </div>
+      @foreach ($optionals as $optional)
+         <label for="optional">{{$optional->nome}}</label>
+         <input type="checkbox" name="optionals[]" value="{{$optional->id}}">
+     @endforeach
+ 
 
     <input type="submit" class="btn btn-primary" value="Invia">
     <div>
