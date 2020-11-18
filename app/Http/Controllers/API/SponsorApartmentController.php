@@ -39,6 +39,8 @@ class SponsorApartmentController extends Controller
         $sponsorApartment = SponsorApartment::create($request->all());
         return response()->json($sponsorApartment,201);
 
+        dd($sponsorApartment);
+
     }
 
 }

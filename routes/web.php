@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//route homepage per guest e admin
+Route::get('/', 'Guest\ApartmentController@index')->name('welcome');
+//route per show guest
+Route::get('/apartments/{apartment}', 'Guest\ApartmentController@show')->name('guest.apartments.show');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+// tolta home inutile
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 Auth::routes();
 

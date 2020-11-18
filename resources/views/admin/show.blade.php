@@ -48,10 +48,10 @@
     @csrf
     @method('POST')
     <input type="submit" class="btn btn-primary" value="Acquista Sponsorizzazione">
-    {{-- aggiungere controllo javascript, se value == 0 allora il bottone non deve fare nulla 
+    {{-- aggiungere controllo javascript, se value == 0 allora il bottone non deve fare nulla
         se no deve fare chiamata API di braintree
-        A) se chiamata ad api braintree ritorna "pagamento ok" (true/false) 
-            allora facciamo chiamata api a sponsors.store, passandogli il value dell'option selezionato (campo tabella sponsor_id), passo anche l'apartment_id 
+        A) se chiamata ad api braintree ritorna "pagamento ok" (true/false)
+            allora facciamo chiamata api a sponsors.store, passandogli il value dell'option selezionato (campo tabella sponsor_id), passo anche l'apartment_id
         B) se false, ritorna alla show dell'appartamento con messaggio 'pagamento non effettuato'
 
         http://127.0.0.1:8000/api/sponsor?apartment_id=5&sponsor_id=1
@@ -62,34 +62,36 @@
 
 @else
 {{-- Sezione per utente non proprietario --}}
-@foreach ($user as $value)
-<h3>Cronologia Messaggi</h3>
-<ul>
-    @foreach ($messages as $message)
-    <li>{{$message->messaggio}} - {{$message->created_at}}</li>
-    @endforeach
-</ul>
-<form action="{{route('messages.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
-    <h3>Contatta il Proprietario</h3>
-    @csrf
-    @method('POST')
-    @if (empty($value->avatar))
-    <img class="img-fluid rounded mx-auto" src="{{asset('storage/images/placeholder_avatar.jpeg')}}" alt="avatar">
-    @else
-    <img class="img-fluid rounded mx-auto"
-        src="{{(substr($value->avatar,0,4)=='http') ?($value->avatar) : (asset('storage/'.$value->avatar))}}"
-        alt="{{$value->nome. '-' . $value->cognome}}">
-    @endif
-    <label for="nome">Nome:</label>
-    <input type="text" name="nome" value="{{$value->nome}}" placeholder="Inserisci il nome" disabled>
-    <label for="email">E-mail:</label>
-    <input type="text" name="email" value="{{$value->email}}" disabled>
-    <label for="messaggio">Messaggio:</label>
-    <textarea name="messaggio" rows="8" cols="80" placeholder="Inserisci il testo"></textarea>
-    <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
-    <input type="submit" class="btn btn-primary" value="Salva">
-</form>
-@endforeach
+@if (isset($user))
+  @foreach ($user as $value)
+  <h3>Cronologia Messaggi</h3>
+  <ul>
+      @foreach ($messages as $message)
+      <li>{{$message->messaggio}} - {{$message->created_at}}</li>
+      @endforeach
+  </ul>
+  <form action="{{route('messages.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
+      <h3>Contatta il Proprietario</h3>
+      @csrf
+      @method('POST')
+      @if (empty($value->avatar))
+      <img class="img-fluid rounded mx-auto" src="{{asset('placeholders/placeholder_avatar.svg')}}" alt="avatar">
+      @else
+      <img class="img-fluid rounded mx-auto"
+          src="{{(substr($value->avatar,0,4)=='http') ?($value->avatar) : (asset('storage/'.$value->avatar))}}"
+          alt="{{$value->nome. '-' . $value->cognome}}">
+      @endif
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" value="{{$value->nome}}" placeholder="Inserisci il nome" disabled>
+      <label for="email">E-mail:</label>
+      <input type="text" name="email" value="{{$value->email}}" disabled>
+      <label for="messaggio">Messaggio:</label>
+      <textarea name="messaggio" rows="8" cols="80" placeholder="Inserisci il testo"></textarea>
+      <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
+      <input type="submit" class="btn btn-primary" value="Salva">
+  </form>
+  @endforeach
+@endif
 
 @endif
 
