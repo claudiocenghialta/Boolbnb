@@ -32,9 +32,14 @@
     </form>
 
     {{-- aggiungere sponsorizzazione e statistiche --}}
-    
+
 @else
     {{-- Sezione per utente non proprietario --}}
+
+<map-show>
+</map-show>
+
+
     @foreach ($user as $value)
         <h3>Cronologia Messaggi</h3>
         <ul>

@@ -25,6 +25,8 @@ class CreateApartmentsTable extends Migration
             $table->text('indirizzo');
             $table->boolean('attivo')->default(true);
             $table->integer('numero_visite')->unsigned()->default(0);
+            $table->decimal('lat',9,6);
+            $table->decimal('lng',9,6);
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
