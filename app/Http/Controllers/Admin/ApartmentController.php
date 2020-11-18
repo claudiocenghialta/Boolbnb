@@ -10,6 +10,8 @@ use App\Optional;
 use App\Image;
 use App\User;
 use App\Message;
+use App\Visit;
+use App\Sponsor;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -86,7 +88,13 @@ class ApartmentController extends Controller
           }
       }
 
-      $newApartment->optionals()->attach($data['optionals']);
+      // $newApartment->optionals()->attach($data['optionals']);
+
+      //se non ci sono optional non va in errore 
+      if (!empty($data['optionals'])) {
+        $newApartment->optionals()->attach($data['optionals']);
+      }
+
       // dd($data['img']);
       // $images= Image::where('apartment_id', $newApartment->id)->get();
 
@@ -99,10 +107,6 @@ class ApartmentController extends Controller
   }
 
 
-
-
-
-
     /**
      * Display the specified resource.
      *
@@ -111,17 +115,22 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        // $apartment = Apartment::find($id);
         $user = User::where('id', Auth::id())->get();
         $optionals = Optional::all();
+        $sponsors = Sponsor::all();
         $images= Image::where('apartment_id', $apartment->id)->get();
         if (Auth::id() == $apartment->user_id) {
             $proprietario = true;
         } else {
             $proprietario = false;
+            // incremento contatore visite
+            $newVisit = new Visit;
+            $newVisit->apartment_id = $apartment->id;
+            $newVisit->data_visita = Carbon::now();
+            $newVisit->save();
         }
         $messages= Message::where([['apartment_id', $apartment->id],['user_id', Auth::id()]])->get();
-        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages'));
+        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages', 'sponsors'));
     }
 
     /**
