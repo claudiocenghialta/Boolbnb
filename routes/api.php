@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('sponsor', 'API\SponsorApartmentController@store');
-
+Route::get('apartments/{apartment}', 'API\ApartmentController@apartments');
+Route::get('apartments', 'API\ApartmentController@index');

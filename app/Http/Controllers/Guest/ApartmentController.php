@@ -16,6 +16,7 @@ class ApartmentController extends Controller
 {
     public function index() {
       $apartmentsAll = Apartment::all();
+      $optionals = Optional::all();
 
       // $images = Image::all();
       $apartments = [];
@@ -29,12 +30,10 @@ class ApartmentController extends Controller
 
       }
 
-      return view('welcome', compact('apartments'));
+      return view('welcome', compact('apartments', 'optionals'));
     }
 
     public function show(Apartment $apartment) {
-
-      //dobbiamo aggiungere optional ebbasta **************************
 
       $optionals = Optional::all();
       $sponsors = Sponsor::all();

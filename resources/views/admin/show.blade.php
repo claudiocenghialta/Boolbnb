@@ -6,12 +6,23 @@
 </div>
 @endif
 <p>Titolo:{{$apartment->titolo}}</p>
-@foreach ($images as $img)
+{{-- prova fix immagini --}}
+@if ($images->count() == 0)
+<img class="img-fluid rounded mx-auto" src="{{asset('placeholders/placeholder-apartment.jpg')}}" alt="placeholder">
+@else
+  @foreach ($images as $img)
 <img class="img-fluid rounded mx-auto"
-    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
-    alt="{{$apartment->titolo}}">
+    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$$img->immagine))}}"
+    alt="no">
+    @endforeach
+ @endif
+    {{-- fino a qui  --}}
 
-@endforeach
+{{-- @foreach ($images as $img)
+<img class="img-fluid rounded mx-auto"
+    src="{{ empty($img->immagine) ? asset('placeholders/placeholder-apartment.jpg') : ( (substr($img->immagine,0,4)=='http') ? ($img->immagine) : (asset('storage/'.$img->immagine)) )}}"
+    alt="{{$apartment->titolo}}">
+@endforeach --}}
 
 <p>Descrizione:{{$apartment->descrizione}}</p>
 <p>N Stanze:{{$apartment->numero_stanze}}</p>
@@ -62,21 +73,26 @@
 </form>
 {{-- aggiungere statistiche --}}
 
+{{-- Sezione per utente non proprietario --}}
 @else
+
 <div id="app">
     <map-show v-bind:lat="{{$apartment->lat}}" v-bind:lng="{{$apartment->lng}}">
     </map-show>
 </div>
 
 {{-- Sezione per utente non proprietario --}}
+
 @if (isset($user))
   @foreach ($user as $value)
-  <h3>Cronologia Messaggi</h3>
-  <ul>
-      @foreach ($messages as $message)
-      <li>{{$message->messaggio}} - {{$message->created_at}}</li>
-      @endforeach
-  </ul>
+  @if ($messages->count() > 0)
+    <h3>Cronologia Messaggi</h3>
+    <ul>
+        @foreach ($messages as $message)
+        <li>{{$message->messaggio}} - {{$message->created_at}}</li>
+        @endforeach
+    </ul>
+  @endif
   <form action="{{route('messages.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
       <h3>Contatta il Proprietario</h3>
       @csrf
@@ -98,6 +114,10 @@
       <input type="submit" class="btn btn-primary" value="Salva">
   </form>
   @endforeach
+@else
+<a class="btn btn-primary" href="{{ route('register')}}">
+  Registrati per contattare il proprietario
+</a>
 @endif
 
 @endif
