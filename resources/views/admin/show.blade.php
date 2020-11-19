@@ -48,6 +48,8 @@
     @csrf
     @method('POST')
     <input type="submit" class="btn btn-primary" value="Acquista Sponsorizzazione">
+
+
     {{-- aggiungere controllo javascript, se value == 0 allora il bottone non deve fare nulla
         se no deve fare chiamata API di braintree
         A) se chiamata ad api braintree ritorna "pagamento ok" (true/false)
@@ -61,8 +63,11 @@
 {{-- aggiungere statistiche --}}
 
 @else
-<map-show>
-</map-show>
+<div id="app">
+    <map-show v-bind:lat="{{$apartment->lat}}" v-bind:lng="{{$apartment->lng}}">
+    </map-show>
+</div>
+
 {{-- Sezione per utente non proprietario --}}
 @if (isset($user))
   @foreach ($user as $value)
