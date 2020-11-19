@@ -6,7 +6,7 @@
 </div>
 @endif
 <p>Titolo:{{$apartment->titolo}}</p>
-{{-- prova immagini --}}
+{{-- prova fix immagini --}}
 @if ($images->count() == 0)
 <img class="img-fluid rounded mx-auto" src="{{asset('placeholders/placeholder-apartment.jpg')}}" alt="placeholder">
 @else
@@ -76,14 +76,17 @@
 <map-show>
 </map-show>
 
+
 @if (isset($user))
   @foreach ($user as $value)
-  <h3>Cronologia Messaggi</h3>
-  <ul>
-      @foreach ($messages as $message)
-      <li>{{$message->messaggio}} - {{$message->created_at}}</li>
-      @endforeach
-  </ul>
+  @if ($messages->count() > 0)
+    <h3>Cronologia Messaggi</h3>
+    <ul>
+        @foreach ($messages as $message)
+        <li>{{$message->messaggio}} - {{$message->created_at}}</li>
+        @endforeach
+    </ul>
+  @endif
   <form action="{{route('messages.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
       <h3>Contatta il Proprietario</h3>
       @csrf
@@ -105,6 +108,10 @@
       <input type="submit" class="btn btn-primary" value="Salva">
   </form>
   @endforeach
+@else
+<a class="btn btn-primary" href="{{ route('register')}}">
+  Registrati per contattare il proprietario
+</a>
 @endif
 
 @endif
