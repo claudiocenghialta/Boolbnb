@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
@@ -17,6 +17,12 @@
 
                     {{ __('You are logged OUT!') }}
                 </div>
+            </div> --}}
+            <div id="app" class="mb-5">
+                <input-search-indirizzo>
+                </input-search-indirizzo>
+                {{-- <Prova>
+                </Prova> --}}
             </div>
             {{-- prova homepage --}}
           @foreach ($apartments as $apartment)
