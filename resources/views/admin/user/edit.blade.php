@@ -11,11 +11,6 @@
 </div>
 @endif
 
-@if (session('status'))
-<div class="alert alert-success">
-  {{ session('status')}}
-</div>
-@endif
 
 @if (empty($user->avatar))
 <img class="img-fluid rounded mx-auto" src="{{asset('placeholders/placeholder_avatar.svg')}}" alt="avatar">

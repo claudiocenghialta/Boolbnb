@@ -32,11 +32,13 @@ class ApartmentController extends Controller
       $raggioKm = isset($data['raggioKm']) ? $data['raggioKm'] : 9999999;
       $numero_stanze = isset($data['numero_stanze']) ? $data['numero_stanze'] : 0;
       $numero_letti = isset($data['numero_letti']) ? $data['numero_letti'] : 0;
+      $numero_bagni = isset($data['numero_bagni']) ? $data['numero_bagni'] : 0;
       $optionals = isset($data['optionals']) ? array_map('intval',explode(',',$data['optionals'])) : [];
       // filtriamo gli appartamenti che corrispondono ai criteri di ricerca
       $apartments = Apartment::where('attivo', '1')
       ->where('numero_stanze','>=', $numero_stanze)
       ->where('numero_letti','>=', $numero_letti)
+      ->where('numero_bagni','>=', $numero_bagni)
       ->get();
       foreach ($apartments as $key => $apartment) {
         // estraggo tutti gli optionals di ogni appartamento

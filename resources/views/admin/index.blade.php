@@ -1,19 +1,11 @@
 @extends('layouts.app')
-{{-- @section('content')
-  <ul>
-    @foreach ($apartments as $apartment)
-      <li>
-        <h1>{{$apartment->titolo}}</h1>
-</li>
-@endforeach
-</ul>
-@endsection --}}
 @section('content')
-@if (session('status'))
+{{-- @if (session('status'))
 <div class="alert alert-success">
   {{ session('status')}}
 </div>
-@endif
+@endif --}}
+
 {{-- INSERIRE CARDS X APPARTAMENTI --}}
 <table class="table mx-auto col-5">
   <thead class="thead-light">
@@ -31,8 +23,8 @@
       <th scope="row">{{ $apartment->id }}</th>
       <td><a href="{{ route('apartments.show', $apartment->id )}}">{{ $apartment->titolo }}</a></td>
       <td><input {{($apartment->attivo==1) ? 'checked' : ''}} type="checkbox" class="custom-control-input"
-          data-apartmentId="{{ $apartment -> id }}" id="flagAttivo{{ $apartment -> id }}">
-        <label class="custom-control-label" for="flagAttivo{{ $apartment -> id }}">Attiva / Disattiva </label></td>
+          data-apartmentId="{{ $apartment->id }}" id="flagAttivo{{ $apartment->id }}">
+        <label class="custom-control-label" for="flagAttivo{{ $apartment->id }}">Attiva / Disattiva </label></td>
       <td><a href="{{ route('apartments.edit', $apartment->id )}}">Edit</a></td>
 
       <td>
