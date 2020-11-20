@@ -33,6 +33,13 @@ class MessageController extends Controller
         return view('admin.messages.index', compact('apartments'));
     }
 
+    public function sent()
+    {
+        $messages = Message::where('user_id', Auth::id())->get();
+        
+        return view('admin.messages.sent', compact('messages'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

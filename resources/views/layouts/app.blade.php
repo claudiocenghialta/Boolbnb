@@ -82,6 +82,9 @@
                                 <a class="dropdown-item" href="{{ route('messages.index') }}">
                                     {{ __('I tuoi messaggi') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('messages.sent') }}">
+                                    {{ __('Messaggi inviati') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

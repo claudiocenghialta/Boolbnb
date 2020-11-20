@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table class="table">
+<table class="table container">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Appartamento</th>

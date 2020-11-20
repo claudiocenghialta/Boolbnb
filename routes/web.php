@@ -33,6 +33,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
   Route::resource('images', 'ImageController');
   Route::resource('users', 'UserController');
   Route::resource('messages', 'MessageController');
+  Route::get('sent', 'MessageController@sent')->name('messages.sent');
   // Route::delete('/image/destroy/{image}', 'ImageController@destroy')->name('image.destroy');
 
 });
