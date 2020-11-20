@@ -15,20 +15,24 @@ use App\SponsorApartment;
 class ApartmentController extends Controller
 {
     public function index() {
-      $apartmentsAll = Apartment::all();
+      $apartments = Apartment::where('attivo','1')->get();
       $optionals = Optional::all();
 
-      // $images = Image::all();
-      $apartments = [];
-
-      foreach ($apartmentsAll as $apartment) {
+      foreach ($apartments as $key =>$apartment) {
         $images = Image::where('apartment_id', $apartment->id)->pluck('immagine')->first();
-
         $apartment['immagine'] = $images;
 
-        $apartments[] = $apartment;
+        // nel caso volessimo avere più immagini per ogni appartamento
+        // $apartment['immagini']  = $apartment->images()->pluck('immagine')->toarray();
+
+        // prendiamo la data fine sponsorizzazione 
+        $apartment['data_fine_sponsor']  = Carbon::parse(SponsorApartment::where('apartment_id',$apartment->id)->pluck('data_fine')->sortDesc()->first());
+        // se la data fine sponsor è passata sponsorizzato = 0 se no =1
+        ($apartment['data_fine_sponsor']->isPast()) ? $apartment['sponsorizzato']=0: $apartment['sponsorizzato']=1;
 
       }
+      // riordiniamo l'array degli appartamenti mettendo per primi quelli sponsorizzati
+      $apartments = $apartments->sortByDesc('sponsorizzato');
 
       return view('welcome', compact('apartments', 'optionals'));
     }

@@ -28,13 +28,24 @@ class SponsorApartmentsTableSeeder extends Seeder
             // $newSponsorApartment->data_inizio = $faker->DateTime();
 
             //date fixed
-            $newSponsorApartment->data_inizio = Carbon::now();
-
             $ora = Carbon::now();
+            $ultimaDataFine = Carbon::parse(SponsorApartment::where('apartment_id',$newSponsorApartment->apartment_id)->pluck('data_fine')->sortDesc()->first());
+            if($ultimaDataFine->greaterThan($ora)){
+                $newSponsorApartment->data_inizio = $ultimaDataFine;
+            } else {
+                $newSponsorApartment->data_inizio = $ora;
+            };
+            $newSponsorApartment->data_fine = Carbon::parse($newSponsorApartment->data_inizio)->addHours($sponsorDurata);
 
-            $fine = $ora->addHours($sponsorDurata);
 
-            $newSponsorApartment->data_fine = $fine;
+            // vecchio metodo
+            // $newSponsorApartment->data_inizio = Carbon::now();
+
+            // $ora = Carbon::now();
+
+            // $fine = $ora->addHours($sponsorDurata);
+
+            // $newSponsorApartment->data_fine = $fine;
 
             $newSponsorApartment->save();
 
