@@ -95,6 +95,35 @@
                                 </form>
                             </div>
                         </li>
+                        {{-- prova dropdown --}}
+                        {{-- <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Inbox
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('messages.index') }}">
+                                  {{ __('Messaggi ricevuti') }}
+                              </a>
+                              <a class="dropdown-item" href="{{ route('messages.sent') }}">
+                                  {{ __('Messaggi inviati') }}
+                              </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Appartamenti
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('apartments.index') }}">
+                                  {{ __('Gestione Appartamenti') }}
+                              </a>
+                              <a class="dropdown-item" href="{{ route('apartments.create') }}">
+                                  {{ __('Aggiungi Appartamento') }}
+                              </a>
+                            </div>
+                        </li> --}}
                         @endguest
                     </ul>
                 </div>
