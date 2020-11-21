@@ -18,16 +18,6 @@ Route::get('/', 'Guest\ApartmentController@index')->name('welcome');
 //route per show guest
 Route::get('/apartments/{apartment}', 'Guest\ApartmentController@show')->name('guest.apartments.show');
 
-// tolta home inutile
-// Route::get('/payment', function () {
-//     $gateway = new Braintree\Gateway([
-//       'environment' => getenv('BT_ENVIRONMENT'),
-//       'merchantId' => getenv('BT_MERCHANT_ID'),
-//       'publicKey' => getenv('BT_PUBLIC_KEY'),
-//       'privateKey' => getenv('BT_PRIVATE_KEY')
-//   ]);
-//     return view('payment');
-// });
 
 Auth::routes();
 
@@ -47,21 +37,6 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
   Route::get('payment', 'PaymentController@index')->name('payment.index');
 
   Route::post('payment/checkout', 'PaymentController@paga')->name('paga');
-
-  // Route::get('/payment', function () {
-  //     $gateway = new Braintree\Gateway([
-  //       'environment' => config('services.braintree.environment'),
-  //       'merchantId' => config('services.braintree.merchantId'),
-  //       'publicKey' => config('services.braintree.publicKey'),
-  //       'privateKey' => config('services.braintree.privateKey')
-  //   ]);
-  //
-  //   $token = $gateway->ClientToken()->generate();
-  //   // dd($token);
-  //     return view('admin.payment', [
-  //       'token' => $token
-  //     ]);
-  // });
 
 
 });
