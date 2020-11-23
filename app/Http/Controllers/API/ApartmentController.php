@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Apartment;
 use App\SponsorApartment;
 use App\Image;
+use Illuminate\Support\Facades\DB;
 
 use App\Optional;
 use Carbon\Carbon;
@@ -87,6 +88,31 @@ class ApartmentController extends Controller
       return json_encode(['success' => 'success']);
     }
     
+     public function statistiche(request $request){
+      // http://localhost:8000/api/statistiche?apartmentId=2
+
+      /* 
+      SELECT  MONTH(visits.data_visita) AS 'mese', COUNT(visits.id)
+      FROM `apartments`
+      JOIN `visits` ON apartments.id = visits.apartment_id
+      WHERE apartments.id = 2
+      GROUP BY apartments.id , mese
+      */
+      $data = $request->all();
+      $apartment = Apartment::find($data['apartmentId']); //dato da passare all'API apartmentId
+      
+      
+      for ($i=1; $i <13; $i++){
+        $anno = Carbon::now()->format('Y');
+        
+        $statistiche['visite'][] = $apartment->visits()-> whereMonth('data_visita', $i) -> whereYear('data_visita', $anno) -> count() ;$statistiche['messaggi'][] = $apartment->messages()-> whereMonth('created_at', $i) -> whereYear('created_at', $anno) -> count() ;
+      };
+
+
+      return response()->json($statistiche);
+
+      
+    }
 
 }
 

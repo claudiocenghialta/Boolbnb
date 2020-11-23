@@ -29,6 +29,11 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
 
+    {{-- Chart js
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous"></script> --}}
+
 </head>
 
 <body>
@@ -103,36 +108,36 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="{{ route('messages.index') }}">
-                                  {{ __('Messaggi ricevuti') }}
-                              </a>
-                              <a class="dropdown-item" href="{{ route('messages.sent') }}">
-                                  {{ __('Messaggi inviati') }}
-                              </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Appartamenti
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="{{ route('apartments.index') }}">
-                                  {{ __('Gestione Appartamenti') }}
-                              </a>
-                              <a class="dropdown-item" href="{{ route('apartments.create') }}">
-                                  {{ __('Aggiungi Appartamento') }}
-                              </a>
-                            </div>
-                        </li> --}}
-                        @endguest
-                    </ul>
+                        {{ __('Messaggi ricevuti') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('messages.sent') }}">
+                            {{ __('Messaggi inviati') }}
+                        </a>
                 </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Appartamenti
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('apartments.index') }}">
+                            {{ __('Gestione Appartamenti') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('apartments.create') }}">
+                            {{ __('Aggiungi Appartamento') }}
+                        </a>
+                    </div>
+                </li> --}}
+                @endguest
+                </ul>
             </div>
-        </nav>
+    </div>
+    </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
     </div>
 </body>
 
