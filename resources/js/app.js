@@ -22,6 +22,8 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('map-show', require('./components/MapShow.vue').default);
 Vue.component('input-create-indirizzo', require('./components/InputCreateIndirizzo.vue').default);
+Vue.component('input-search-indirizzo', require('./components/InputSearchIndirizzo.vue').default);
+Vue.component('prova', require('./components/Prova.vue').default);
 
 
 /**

@@ -1,12 +1,29 @@
 <template>
-<input type="search" id="input-map" name="indirizzo" class="form-control" placeholder="Where are we going?" />
+<div>
+<input type="search" id="input-map" name="indirizzo" class="form-control" placeholder="Dove Si Trova?" />
+
+<div>
+<input type="hidden"  name="lat" class="form-control" :value="latitude" />
+<input type="hidden"  name="lng" class="form-control" :value="longitude" />
+</div>
+</div>
+
+
+
 
 </template>
 
 <script>
     export default {
+        data(){
+            return{
+            latitude: '',
+            longitude: ''
+            };
+        },
         mounted() {
         var places = require('places.js');
+        var self = this;
         (function() {
         var placesAutocomplete = places({
             appId: 'pl3L7TF7T3Q6',
@@ -17,14 +34,9 @@
         });
 
         var markers = [];
-        var indirizzo = {
-            lat:'',
-            lng:''
-        };
 
         placesAutocomplete.on('suggestions', handleOnSuggestions );
         placesAutocomplete.on('change', handleOnChange);
-            console.log(indirizzo);
         function handleOnSuggestions(e) {
             markers = [];
             e.suggestions.forEach(addMarker);
@@ -35,8 +47,8 @@
         .forEach(function(marker, markerIndex) {
           if (markerIndex === e.suggestionIndex) {
             markers = [marker];
-            indirizzo.lng = marker._latlng.lng;
-            indirizzo.lat = marker._latlng.lat;
+            self.longitude = marker._latlng.lng;
+            self.latitude = marker._latlng.lat;
           }
           });
         }
@@ -48,6 +60,7 @@
 
         })();
 
-                }
-            }
+        },
+
+    }
 </script>
