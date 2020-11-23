@@ -3,7 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+require('./partials/search.js');
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('map-show', require('./components/MapShow.vue').default);
 Vue.component('input-create-indirizzo', require('./components/InputCreateIndirizzo.vue').default);
+Vue.component('input-edit-indirizzo', require('./components/InputEditIndirizzo.vue').default);
 Vue.component('input-search-indirizzo', require('./components/InputSearchIndirizzo.vue').default);
 Vue.component('prova', require('./components/Prova.vue').default);
 

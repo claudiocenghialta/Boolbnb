@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //route homepage per guest e admin
 Route::get('/', 'Guest\ApartmentController@index')->name('welcome');
+Route::get('/search', 'Guest\SearchController@index')->name('search');
 //route per show guest
 Route::get('/apartments/{apartment}', 'Guest\ApartmentController@show')->name('guest.apartments.show');
 
