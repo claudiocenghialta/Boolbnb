@@ -5,6 +5,7 @@
 <div>
 <input type="hidden"  name="lat" class="form-control" :value="latitude" />
 <input type="hidden"  name="lng" class="form-control" :value="longitude" />
+
 </div>
 </div>
 
