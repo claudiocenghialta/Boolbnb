@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Message;
+use App\User;
+use App\Apartment;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
@@ -17,7 +19,25 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        // $user = Auth::id();
+        $apartments = Apartment::where('user_id', Auth::id())->get();
+        foreach ($apartments as $apartment){
+            // estraggo tutti i messaggi ricevuti per ogni appartamento
+            $apartment['messaggi'] = $apartment->messages()->get();
+            // foreach ($apartment['messaggi'] as $message) {
+            //     $message['mailMitt'] = $message->user()->pluck('email')->first();
+            //     // $messagesReceived[]=$message;
+            // }
+        }
+        // dd($apartments);
+        return view('admin.messages.index', compact('apartments'));
+    }
+
+    public function sent()
+    {
+        $messages = Message::where('user_id', Auth::id())->get();
+        
+        return view('admin.messages.sent', compact('messages'));
     }
 
     /**

@@ -13,12 +13,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 5; $i++) {
+      for ($i=0; $i < 3; $i++) {
              $newUser = new User;
              $newUser->nome = $faker->name;
              $newUser->email = $faker->email;
              $newUser->password = Hash::make('esempio');
              $newUser->save();
          }
+
+         $newUser = new User;
+             $newUser->nome = 'Cristiano';
+             $newUser->cognome = 'Malgioglio';
+             $newUser->email = 'malgy@gmail.com';
+             $newUser->password = Hash::make('esempio');
+             $newUser->save();
     }
 }
