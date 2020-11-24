@@ -19,7 +19,7 @@ class SponsorApartmentsTableSeeder extends Seeder
         $apartmentCount = count(Apartment::all()->toArray());
         $sponsorCount = count(Sponsor::all()->toArray());
 
-        for ($i=0; $i < $apartmentCount; $i++) {
+        for ($i=0; $i < 30; $i++) {
             $newSponsorApartment = new SponsorApartment;
             $newSponsorApartment->apartment_id = rand(1,$apartmentCount);
             $newSponsorApartment->sponsor_id = rand(1,$sponsorCount);
@@ -28,12 +28,13 @@ class SponsorApartmentsTableSeeder extends Seeder
             // $newSponsorApartment->data_inizio = $faker->DateTime();
 
             //date fixed
-            $ora = Carbon::now();
+            
+            $fakerData =  $faker->dateTimeBetween('-200 days','4 days');
             $ultimaDataFine = Carbon::parse(SponsorApartment::where('apartment_id',$newSponsorApartment->apartment_id)->pluck('data_fine')->sortDesc()->first());
-            if($ultimaDataFine->greaterThan($ora)){
+            if($ultimaDataFine->greaterThan($fakerData)){
                 $newSponsorApartment->data_inizio = $ultimaDataFine;
             } else {
-                $newSponsorApartment->data_inizio = $ora;
+                $newSponsorApartment->data_inizio = $fakerData;
             };
             $newSponsorApartment->data_fine = Carbon::parse($newSponsorApartment->data_inizio)->addHours($sponsorDurata);
 
@@ -41,9 +42,9 @@ class SponsorApartmentsTableSeeder extends Seeder
             // vecchio metodo
             // $newSponsorApartment->data_inizio = Carbon::now();
 
-            // $ora = Carbon::now();
+            // $fakerData = Carbon::now();
 
-            // $fine = $ora->addHours($sponsorDurata);
+            // $fine = $fakerData->addHours($sponsorDurata);
 
             // $newSponsorApartment->data_fine = $fine;
 

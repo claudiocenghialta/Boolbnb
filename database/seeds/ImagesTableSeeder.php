@@ -20,7 +20,7 @@ class ImagesTableSeeder extends Seeder
 
 
 
-         for ($i=0; $i < 20 ; $i++) {
+         for ($i=0; $i < 40 ; $i++) {
             $newImage = new Image;
             //usiamo picsumUrl per utilizzare il nuovo provider
             $newImage->immagine = $faker->picsumUrl(640,480);
