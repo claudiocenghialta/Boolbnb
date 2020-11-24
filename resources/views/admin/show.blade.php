@@ -1,7 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
+
 <div class="container">
+  @if (session('success_message'))
+  <div class="alert alert-success">
+    {{ session('success_message')}}
+  </div>
+  @endif
+  @if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
     <p>Titolo:{{$apartment->titolo}}</p>
     {{-- prova fix immagini --}}
     @if ($images->count() == 0)
@@ -43,18 +58,34 @@
     {{-- aggiungere sponsorizzazione --}}
     <label for="sponsor">Sponsorizza</label>
 
-    <form action="{{-- {{route('sponsors.store', )}} --}}" method="post" enctype="multipart/form-data"
-        class="card col-5 mx-auto">
-        <select id="sponsor" name="id">
-            <option value="0">Seleziona una opzione</option>
-            @foreach ($sponsors as $sponsor)
-            <option value="{{$sponsor->id}}">{{$sponsor->nome}} - € {{$sponsor->costo}}</option>
-            @endforeach
-        </select>
-        <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
-        @csrf
-        @method('POST')
-        <input type="submit" class="btn btn-primary" value="Acquista Sponsorizzazione">
+    @if ($sponsorizzato == null)
+      <div class="">
+        Non hai sponsorizzazioni attive su questo appartamento
+      </div>
+      @else
+        <div class="">
+          L'appertamento è sponsorizzato fino al {{$sponsorizzato->format('d-M-Y - H:m')}}
+        </div>
+    @endif
+
+        {{-- prova per sponsor --}}
+
+                @foreach ($sponsors as $sponsor)
+                  <form action="{{route('payment.index')}}" method="post" enctype="multipart/form-data"
+                      class="card col-5 mx-auto">
+                  <div class="card">
+                    <h1 class="card-title">{{$sponsor->nome}}</h1>
+                    <h2 class="card-title">€ {{$sponsor->costo}}</h2>
+                    <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
+                    <input type="hidden" name="costo" value="{{$sponsor->costo}}">
+                    <input type="hidden" name="sponsor_id" value="{{$sponsor->id}}">
+                    @csrf
+                    @method('GET')
+                    <input type="submit" class="btn btn-primary" value="Acquista Sponsorizzazione">
+                  </div>
+                </form>
+                @endforeach
+
 
 
         {{-- aggiungere controllo javascript, se value == 0 allora il bottone non deve fare nulla

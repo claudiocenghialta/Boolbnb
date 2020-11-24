@@ -15,7 +15,6 @@
     </ul>
   </div>
   @endif
-
 <div class="container">
   <form method="post" id="payment-form" action="{{ route('paga') }}">
     @csrf
@@ -24,7 +23,10 @@
           <label for="amount">
               <span class="input-label">Amount</span>
               <div class="input-wrapper amount-wrapper">
-                  <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+                  <input id="amount" name="amount" type="tel" min="1" placeholder="amount" value="{{$data['costo']}}" disabled>
+                  <input type="hidden" name="apartment_id" value="{{$data['apartment_id']}}">
+                  <input type="hidden" name="costo" value="{{$data['costo']}}">
+                  <input type="hidden" name="sponsor_id" value="{{$data['sponsor_id']}}">
               </div>
           </label>
 

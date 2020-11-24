@@ -20,7 +20,7 @@
       <th scope="row">{{$apartment->titolo}}</th>
       <td>{{$message->messaggio}}</td>
       <td>{{$message->user->email}}</td>
-      <td>{{$message->updated_at->format('D d/m/Y - h:m')}}</td>
+      <td>{{$message->updated_at->format('D d/m/Y - H:m')}}</td>
       <td><a
           href="mailto:{{$message->user->email}}?subject=Informazioni - {{$apartment->titolo}}&body={{"---Messaggio Originale---".$message->messaggio}}">Rispondi
           via mail</a></td>
