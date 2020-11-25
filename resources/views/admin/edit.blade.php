@@ -1,64 +1,70 @@
 @extends('layouts.app')
 @section('content')
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-   @endif
-  <form action="{{route('apartments.update', $apartment->id)}}" method="post"  enctype="multipart/form-data" class="card col-5 mx-auto">
+@if ($errors->any())
+<div class="alert alert-danger">
+  <ul>
+    @foreach ($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+</div>
+@endif
+<form action="{{route('apartments.update', $apartment->id)}}" method="post" enctype="multipart/form-data"
+  class="card col-5 mx-auto">
   @csrf
   @method('PATCH')
-    <label for="titolo">Titolo:</label>
-      <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
-      @if ($immaginiRimanenti != 0)
-          @for ($i=0; $i < $immaginiRimanenti; $i++)
-              <label for="img{{$i+1}}">Immagine di copertina</label>
-                <input type="file" name="img{{$i+1}}" accept="image/*">
-          @endfor
-      @else
-           <label for="img">Immagine di copertina</label>
-          <div class="alert alert-danger">
-              Hai già caricato tutte le immagini a disposizione!!!!!!!!!!!!!
-          </div>
-      @endif
+  <label for="titolo">Titolo:</label>
+  <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
+  @if ($immaginiRimanenti != 0)
+  @for ($i=0; $i < $immaginiRimanenti; $i++) <label for="img{{$i+1}}">Immagine di copertina</label>
+    <input type="file" name="img{{$i+1}}" accept="image/*">
+    @endfor
+    @else
+    <label for="img">Immagine di copertina</label>
+    <div class="alert alert-danger">
+      Hai già caricato tutte le immagini a disposizione!!!!!!!!!!!!!
+    </div>
+    @endif
 
     <label for="descrizione">Descrizione:</label>
-      <textarea name="descrizione" rows="8" cols="80"  placeholder="Inserisci il testo">{{$apartment->descrizione}}</textarea>
+    <textarea name="descrizione" rows="8" cols="80"
+      placeholder="Inserisci il testo">{{$apartment->descrizione}}</textarea>
     <label for="numero_stanze">N Stanze:</label>
-      <input type="number" name="numero_stanze" value="{{$apartment->numero_stanze}}" placeholder="Inserisci il numero_stanze">
+    <input type="number" name="numero_stanze" value="{{$apartment->numero_stanze}}"
+      placeholder="Inserisci il numero_stanze">
     <label for="numero_letti">N Letti:</label>
-      <input type="number" name="numero_letti" value="{{$apartment->numero_letti}}" placeholder="Inserisci il numero_letti">
+    <input type="number" name="numero_letti" value="{{$apartment->numero_letti}}"
+      placeholder="Inserisci il numero_letti">
     <label for="numero_bagni">N Bagni:</label>
-      <input type="number" name="numero_bagni" value="{{$apartment->numero_bagni}}" placeholder="Inserisci il numero_bagni">
+    <input type="number" name="numero_bagni" value="{{$apartment->numero_bagni}}"
+      placeholder="Inserisci il numero_bagni">
     <label for="mq">Metri Quadrati:</label>
-      <input type="number" name="mq" value="{{$apartment->mq}}" placeholder="Inserisci i metri Quadrati">
+    <input type="number" name="mq" value="{{$apartment->mq}}" placeholder="Inserisci i metri Quadrati">
     {{-- fare check con algolia --}}
     <label for="indirizzo">Indirizzo:</label>
-      <input type="text" name="indirizzo" value="{{$apartment->indirizzo}}" placeholder="Inserisci il indirizzo">
-      {{-- <div id="app">
+    <input type="text" name="indirizzo" value="{{$apartment->indirizzo}}" placeholder="Inserisci il indirizzo">
+    {{-- <div id="app">
         <input-create-indirizzo>
         </input-create-indirizzo>
       </div> --}}
-     @foreach ($optionals as $optional)
-        <label for="optional">{{$optional->nome}}</label>
-        <input type="checkbox" name="optionals[]" value="{{$optional->id}}"{{($apartment->optionals->contains($optional->id) ? 'checked' : '')}}>
+    @foreach ($optionals as $optional)
+    <label for="optional">{{$optional->nome}}</label>
+    <input type="checkbox" name="optionals[]" value="{{$optional->id}}"
+      {{($apartment->optionals->contains($optional->id) ? 'checked' : '')}}>
     @endforeach
-    <input type="submit"class="btn btn-primary" value="Salva">
+    <input type="submit" class="btn btn-primary" value="Salva">
+</form>
+@foreach ($images as $img)
+<div class="">
+  <img class="img-fluid rounded mx-auto"
+    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
+    alt="{{$apartment->titolo}}">
+  <form action="{{ route('images.destroy', $img->id )}}" method="post">
+    @csrf
+    @method('DELETE')
+    <button type="submit" name="button" class="btn btn-alert btn-delete-alert">Delete</button>
   </form>
-  @foreach ($images as $img)
-      <div class="">
-          <img class="img-fluid rounded mx-auto"
-              src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}" alt="{{$apartment->titolo}}">
-              <form action="{{ route('images.destroy', $img->id )}}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit" name="button" class="btn btn-alert">Delete</button>
-              </form>
-      </div>
+</div>
 
-  @endforeach
+@endforeach
 @endsection

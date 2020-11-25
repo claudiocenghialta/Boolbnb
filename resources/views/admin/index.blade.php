@@ -31,7 +31,7 @@
         <form action="{{ route('apartments.destroy', $apartment->id )}}" method="post">
           @csrf
           @method('DELETE')
-          <button type="submit" name="button" class="btn btn-danger">Delete</button>
+          <button type="submit" name="button" class="btn btn-danger btn-delete-alert">Delete</button>
         </form>
       </td>
     </tr>
