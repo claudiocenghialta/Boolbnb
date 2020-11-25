@@ -24,6 +24,8 @@ class ApartmentController extends Controller
       return response()->json($apartment,200);
     }
 
+
+    
     public function search(Request $request) {
       // http://localhost:8000/api/search?numero_stanze=7&numero_letti=5
       // settiamo i parametri di ricerca
