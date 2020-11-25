@@ -22,5 +22,5 @@ Route::post('sponsor', 'API\SponsorApartmentController@store')->name('sponsor.st
 Route::get('apartments/{apartment}', 'API\ApartmentController@apartments');
 Route::get('apartments', 'API\ApartmentController@index');
 Route::get('search', 'API\ApartmentController@search');
-Route::get('attivaApp', 'API\ApartmentController@attivaApp');
+Route::post('attivaApp', 'API\ApartmentController@attivaApp');
 Route::get('statistiche', 'API\ApartmentController@statistiche');

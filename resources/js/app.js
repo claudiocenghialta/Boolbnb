@@ -6,6 +6,7 @@
 
 require("./bootstrap");
 require("./partials/chart.js");
+require("./partials/attivaAppart.js");
 
 window.Vue = require("vue");
 
