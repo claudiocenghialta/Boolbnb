@@ -60,7 +60,7 @@ class SearchController extends Controller
       // }
     }
     $optionals = Optional::all();
-    return view('search',compact('apartments','optionals'));
+    return view('search',compact('apartments','optionals','lat','lng'));
 
 
   }

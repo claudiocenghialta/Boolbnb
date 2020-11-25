@@ -45,6 +45,7 @@ class ApartmentController extends Controller
       ->get();
       foreach ($apartments as $key => $apartment) {
         // estraggo tutti gli optionals di ogni appartamento
+        $optionalAppNome = $apartment->optionals()->pluck('nome')->toarray();
         $optionalApp = $apartment->optionals()->pluck('id')->toarray();
         /* array_diff confronta gli elementi del primo array con gli elementi del secondo array e restituisce gli elementi del primo array che non ha trovato nel secondo array.
         con l'array degli optionals vuoto ritorna [] perchè non ha elementi da restituire
@@ -52,7 +53,7 @@ class ApartmentController extends Controller
         */
         if (!array_diff($optionals,$optionalApp)){
           // se gli optionals corrispondono ai filtri di ricerca li aggiungo all'array degli appartamenti
-          $apartment['optionals'] = $optionalApp;
+          $apartment['optionals'] = $optionalAppNome;
           // aggiungo le immagini
           $apartment['immagini']  = $apartment->images()->pluck('immagine')->toarray();
           // calcolo la distanza dallle coordinate lat e lng passate con la ricerca
@@ -62,7 +63,7 @@ class ApartmentController extends Controller
           } else {
             $apartment['distanzaKm']  = $distanzaApp;
           }
-          // prendiamo la data fine sponsorizzazione 
+          // prendiamo la data fine sponsorizzazione
           // $apartment['data_fine_sponsor']  = $apartment->SponsorApartments()->get()->sortByDesc('id');
           $apartment['data_fine_sponsor']  = Carbon::parse(SponsorApartment::where('apartment_id',$apartment->id)->pluck('data_fine')->sortDesc()->first());
           // se la data fine sponsor è passata allora mettiamo valore ''
@@ -119,18 +120,18 @@ class ApartmentController extends Controller
 }
 
 // formula matematica per il calcolo della distanza in km tra due punti identificati dalle coordinate latitudine e longitudine
-    function distance($lat1, $lon1, $lat2, $lon2) { 
-        $pi80 = M_PI / 180; 
-        $lat1 *= $pi80; 
-        $lon1 *= $pi80; 
-        $lat2 *= $pi80; 
-        $lon2 *= $pi80; 
-        $r = 6372.797; // mean radius of Earth in km 
-        $dlat = $lat2 - $lat1; 
-        $dlon = $lon2 - $lon1; 
-        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2); 
-        $c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
-        $km = $r * $c; 
-        
-        return $km; 
+    function distance($lat1, $lon1, $lat2, $lon2) {
+        $pi80 = M_PI / 180;
+        $lat1 *= $pi80;
+        $lon1 *= $pi80;
+        $lat2 *= $pi80;
+        $lon2 *= $pi80;
+        $r = 6372.797; // mean radius of Earth in km
+        $dlat = $lat2 - $lat1;
+        $dlon = $lon2 - $lon1;
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2);
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        $km = $r * $c;
+
+        return $km;
     }
