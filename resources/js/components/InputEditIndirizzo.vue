@@ -1,14 +1,12 @@
 <template>
 <div>
+<input type="text" id="input-map" name="indirizzo" class="form-control"/>
 
-<label for="indirizzo"><h2>CERCA IL TUO COVO</h2></label>
-<input type="search" id="input-map" name="indirizzo" class="form-control" placeholder="Dove Vuoi Cercare?" />
-<input type="hidden" id="lat" :value="latitude" name="lat" class="form-control" placeholder="Dove Vuoi Cercare?" />
-<input type="hidden" id="lng" :value="longitude" name="lng" class="form-control" placeholder="Dove Vuoi Cercare?" />
+<div>
+<input type="hidden"  name="lat" class="form-control" :value="latitude" />
+<input type="hidden"  name="lng" class="form-control" :value="longitude" />
 
-
-
-
+</div>
 </div>
 
 
@@ -21,7 +19,8 @@
         data(){
             return{
             latitude: '',
-            longitude: ''
+            longitude: '',
+            ind:''
             };
         },
         mounted() {
@@ -33,8 +32,9 @@
             apiKey: '4b8aa1d10ced4e6a8b8c3fb1dc58072e',
             container: document.querySelector('#input-map')
         }).configure({
-            type:'city'
+            type:'address'
         });
+
         var markers = [];
 
         placesAutocomplete.on('suggestions', handleOnSuggestions );

@@ -19,10 +19,13 @@
                 </div>
             </div> --}}
             <div id="app" class="mb-5">
-                <input-search-indirizzo>
-                </input-search-indirizzo>
-                {{-- <Prova>
-                </Prova> --}}
+                <form class="form-search" action="{{route('search')}}" method="get">
+                  <input-search-indirizzo>
+                  </input-search-indirizzo>
+                  <input type="submit" name="" value="cerca">
+                </form>
+
+
             </div>
             {{-- prova homepage --}}
           @foreach ($apartments as $apartment)
