@@ -22,7 +22,7 @@
     <tr>
       <th scope="row">{{ $apartment->id }}</th>
       <td><a href="{{ route('apartments.show', $apartment->id )}}">{{ $apartment->titolo }}</a></td>
-      <td><input {{($apartment->attivo==1) ? 'checked' : ''}} type="checkbox" class="custom-control-input"
+      <td><input {{($apartment->attivo==1) ? 'checked' : ''}} type="checkbox" class="custom-control-input flagAttivo"
           data-apartmentId="{{ $apartment->id }}" id="flagAttivo{{ $apartment->id }}">
         <label class="custom-control-label" for="flagAttivo{{ $apartment->id }}">Attiva / Disattiva </label></td>
       <td><a href="{{ route('apartments.edit', $apartment->id )}}">Edit</a></td>
@@ -31,7 +31,7 @@
         <form action="{{ route('apartments.destroy', $apartment->id )}}" method="post">
           @csrf
           @method('DELETE')
-          <button type="submit" name="button" class="btn btn-danger">Delete</button>
+          <button type="submit" name="button" class="btn btn-danger btn-delete-alert">Delete</button>
         </form>
       </td>
     </tr>

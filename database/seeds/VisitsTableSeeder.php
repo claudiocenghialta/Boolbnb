@@ -13,14 +13,14 @@ class VisitsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $apartmentCount = count(Apartment::all()->toArray());
 
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 100; $i++) {
             $newVisit = new Visit;
             $newVisit->apartment_id = rand(1,$apartmentCount);
-            $newVisit->data_visita = Carbon::now();
+            $newVisit->data_visita = $faker->dateTimeBetween('-200 days','-1 days');
 
             $newVisit->save();
         }

@@ -21,7 +21,7 @@
 <form action="{{ route('images.destroy', $user->avatar )}}" method="post">
   @csrf
   @method('DELETE')
-  <button type="submit" name="button" class="btn btn-alert">Delete</button>
+  <button type="submit" name="button" class="btn btn-alert btn-delete-alert">Delete</button>
 </form>
 @endif
 

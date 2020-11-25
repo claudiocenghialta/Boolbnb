@@ -12,6 +12,7 @@ use App\User;
 use App\Message;
 use App\Visit;
 use App\Sponsor;
+use App\SponsorApartment;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -131,7 +132,15 @@ class ApartmentController extends Controller
             $newVisit->save();
         }
         $messages= Message::where([['apartment_id', $apartment->id],['user_id', Auth::id()]])->get();
-        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages', 'sponsors'));
+        $sponsorizzato= SponsorApartment::where('apartment_id', $apartment->id)->pluck('data_fine')->sortDesc()->first();
+        $ora = Carbon::now();
+        $ultimaDataFine = Carbon::parse(SponsorApartment::where('apartment_id',$apartment->id)->pluck('data_fine')->sortDesc()->first());
+        if($ultimaDataFine->greaterThan($ora)){
+            $sponsorizzato = $ultimaDataFine;
+        } else {
+            $sponsorizzato = null;
+        };
+        return view('admin.show',compact('apartment', 'optionals', 'images', 'proprietario', 'user', 'messages', 'sponsors', 'sponsorizzato'));
     }
 
     /**

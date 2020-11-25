@@ -5,8 +5,11 @@
  */
 require('./partials/search.js');
 require('./bootstrap');
+require("./partials/chart.js");
+require("./partials/attivaAppart.js");
+require("./partials/alertDelete.js");
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,7 +29,6 @@ Vue.component('input-edit-indirizzo', require('./components/InputEditIndirizzo.v
 Vue.component('input-search-indirizzo', require('./components/InputSearchIndirizzo.vue').default);
 Vue.component('prova', require('./components/Prova.vue').default);
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -34,5 +36,5 @@ Vue.component('prova', require('./components/Prova.vue').default);
  */
 
 const app = new Vue({
-    el: '#app',
+    el: "#app"
 });

@@ -52,7 +52,7 @@
               <p class="card-text">{{ $apartment->descrizione }}</p>
               <p class="card-text"><small class="text-muted"></small>Sponsorizzato: {{ $apartment->sponsorizzato }}
               </p>
-              <p class="card-text"><small class="text-muted">Ultimo aggiornamento: {{ $apartment->updated_at->format('d-M-Y - h:m') }} </small></p>
+              <p class="card-text"><small class="text-muted">Ultimo aggiornamento: {{ $apartment->updated_at->format('d-M-Y - H:m') }} </small></p>
 
             </div>
           </div>

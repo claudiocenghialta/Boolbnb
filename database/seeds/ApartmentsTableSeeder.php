@@ -73,8 +73,58 @@ class ApartmentsTableSeeder extends Seeder
               'lat'=>44.5107,
               'lng'=>11.4591,
           ],
+          [
+              'indirizzo'=>'Via Po, Torino, Piemonte, Italia',
+              'lat'=>45.0683,
+              'lng'=>7.69005,
+          ],
+          [
+              'indirizzo'=>'Via Albiroli, Bologna, Emilia-Romagna, Italia',
+              'lat'=>44.4959,
+              'lng'=>11.3449,
+          ],
+          [
+              'indirizzo'=>'Via T. A. Edison, Bolzano, Trentino-Alto Adige/Südtirol, Italia',
+              'lat'=>46.478,
+              'lng'=>11.3449,
+          ],
+          [
+              'indirizzo'=>'Via Antonio Banfi, Imola, Emilia-Romagna, Italia',
+              'lat'=>44.3506,
+              'lng'=>11.7331,
+          ],
+          [
+              'indirizzo'=>'Via Achille Grandi, Moncalieri, Piemonte, Italia',
+              'lat'=>44.9721,
+              'lng'=>7.70917,
+          ],
+          [
+              'indirizzo'=>'Via Genova, Ladispoli, Lazio, Italia',
+              'lat'=>41.9481,
+              'lng'=>12.0836,
+          ],
+          [
+              'indirizzo'=>'Piazzale dello Stadio Olimpico, Roma, Lazio, Italia',
+              'lat'=>41.9335,
+              'lng'=>12.4525,
+          ],
+          [
+              'indirizzo'=>'Via Tiburtina, Roma, Lazio, Italia',
+              'lat'=>41.925,
+              'lng'=>12.5728,
+          ],
+          [
+              'indirizzo'=>'Corso Orbassano, Torino, Piemonte, Italia',
+              'lat'=>45.0351,
+              'lng'=>7.62366,
+          ],
+          [
+              'indirizzo'=>'Corso Aldo Moro, Castenaso, Emilia-Romagna, Italia',
+              'lat'=>44.5107,
+              'lng'=>11.4591,
+          ],
       ];
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 20; $i++) {
             $newApartment = new Apartment;
             $newApartment->titolo = $faker->sentence(3);
             $newApartment->descrizione = $faker->text(500);

@@ -17,7 +17,7 @@
       <th scope="row">{{$message->apartment->titolo}}</th>
       <td>{{$message->messaggio}}</td>
       <td>{{$message->apartment->user->email}}</td>
-      <td>{{$message->updated_at->format('D d/m/Y - h:m')}}</td>
+      <td>{{$message->updated_at->format('D d/m/Y - H:m')}}</td>
     </tr>
     @endforeach
   </tbody>

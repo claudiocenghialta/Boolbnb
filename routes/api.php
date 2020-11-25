@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('sponsor', 'API\SponsorApartmentController@store');
+//serve? forse no
+Route::post('sponsor', 'API\SponsorApartmentController@store')->name('sponsor.store');
 Route::get('apartments/{apartment}', 'API\ApartmentController@apartments');
 Route::get('apartments', 'API\ApartmentController@index');
 Route::get('search', 'API\ApartmentController@search');
-Route::get('attivaApp', 'API\ApartmentController@attivaApp');
+Route::post('attivaApp', 'API\ApartmentController@attivaApp');
+Route::get('statistiche', 'API\ApartmentController@statistiche');
