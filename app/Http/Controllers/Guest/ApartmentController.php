@@ -32,7 +32,8 @@ class ApartmentController extends Controller
 
       }
       // riordiniamo l'array degli appartamenti mettendo per primi quelli sponsorizzati
-      $apartments = $apartments->sortByDesc('sponsorizzato');
+      // $apartments = $apartments->sortByDesc('sponsorizzato');
+      $apartments = $apartments->where('sponsorizzato','=',1);
 
       return view('welcome', compact('apartments', 'optionals'));
     }

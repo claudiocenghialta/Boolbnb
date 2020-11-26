@@ -10917,3 +10917,31 @@ a.text-dark:focus {
   color: navy;
 }
 
+section#vetrina .container-card-welcome {
+  width: 90vw;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+section#vetrina .container-card-welcome .card.card-welcome {
+  flex: 0 0 350px;
+}
+
+section#vetrina .container-card-welcome .card.card-welcome .card-img-top {
+  max-height: 260px;
+}
+
+section#host {
+  background-color: navy;
+}
+
+section#host .host-image-container {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+section#cities {
+  height: 300px;
+}
+
