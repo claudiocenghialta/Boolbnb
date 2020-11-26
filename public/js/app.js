@@ -8673,11 +8673,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      latitude: '',
-      longitude: ''
+      latitude: "",
+      longitude: ""
     };
   },
   mounted: function mounted() {
@@ -8687,15 +8713,15 @@ __webpack_require__.r(__webpack_exports__);
 
     (function () {
       var placesAutocomplete = places({
-        appId: 'pl3L7TF7T3Q6',
-        apiKey: '4b8aa1d10ced4e6a8b8c3fb1dc58072e',
-        container: document.querySelector('#inputMap')
+        appId: "pl3L7TF7T3Q6",
+        apiKey: "4b8aa1d10ced4e6a8b8c3fb1dc58072e",
+        container: document.querySelector("#inputMap")
       }).configure({
-        type: 'city'
+        type: "city"
       });
       var markers = [];
 
-      if (self.$refs.controllerLat !== '') {
+      if (self.$refs.controllerLat !== "") {
         if (self.$refs.controllerLat == self.$refs.lat) {
           self.latitude = self.$refs.controllerLat;
         } else {
@@ -8705,8 +8731,8 @@ __webpack_require__.r(__webpack_exports__);
         boh();
       }
 
-      placesAutocomplete.on('suggestions', handleOnSuggestions);
-      placesAutocomplete.on('change', handleOnChange);
+      placesAutocomplete.on("suggestions", handleOnSuggestions);
+      placesAutocomplete.on("change", handleOnChange);
 
       function boh() {
         self.latitude = self.$refs.controllerLat.val();
@@ -92000,8 +92026,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("input", {
       staticClass: "form-control",
       attrs: {
@@ -92047,16 +92071,7 @@ var render = function() {
     })
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "indirizzo" } }, [
-      _c("h2", [_vm._v("CERCA IL TUO COVO")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -104831,6 +104846,159 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/partials/alertDelete.js":
+/*!**********************************************!*\
+  !*** ./resources/js/partials/alertDelete.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+$(document).ready(function () {
+  $(".btn-delete-alert").click(function () {
+    var result = confirm("Sicuro di voler cancellare?");
+
+    if (result) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/partials/attivaAppart.js":
+/*!***********************************************!*\
+  !*** ./resources/js/partials/attivaAppart.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+$(document).ready(function () {
+  $(".flagAttivo").change(function () {
+    var id = $(this).attr("data-apartmentId");
+    $.ajax({
+      method: "POST",
+      url: "http://localhost:8000/api/attivaApp",
+      data: {
+        apartmentId: id
+      },
+      success: function success(result) {
+        console.log(result);
+      },
+      error: function error(_error) {
+        console.log(_error);
+      }
+    });
+    console.log("id", id);
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/partials/chart.js":
+/*!****************************************!*\
+  !*** ./resources/js/partials/chart.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+$(document).ready(function () {
+  getStats();
+}); // la funzione fa una chiamata ajax all'url /getStats. manda come dato l'id dell'appartamento in questione. il controller ApiController risponderà con un json con due array con le visite e i messaggi divisi per mese di quell'appartamento.
+
+function getStats() {
+  var apartmentId = $("#stats").data("apartment-id"); // l'id lo prendo da data-id="" del id="stats" dove ho stampato l'id dell'appartamento senza mostrarlo all'utente che non gli interessa
+
+  console.log(apartmentId);
+  $.ajax({
+    url: "../../api/statistiche",
+    method: "GET",
+    data: {
+      apartmentId: apartmentId
+    },
+    success: function success(data) {
+      var numVisite = data["visite"];
+      var numMessaggi = data["messaggi"];
+      console.log(numVisite, numMessaggi); // le due funzioni stamperanno i grafici
+
+      addVisitsChart(numVisite);
+      addMessagesChart(numMessaggi);
+    },
+    error: function error(err) {
+      console.log(err);
+    }
+  });
+}
+
+function addVisitsChart(data) {
+  // [12, 19, 3, 5, 2, 3, 7, 15, 23, 39, 2]
+  // si utilizza la libreria charts per stampare il grafico. in questo caso è un grafico a colonne è possibile specificare delle opzioni tipo colore colonne, quante colonne, le label ecc
+  var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+
+  var ctx = $("#myVisitChart");
+  var myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      datasets: [{
+        label: "# of Visits",
+        data: data,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+function addMessagesChart(data) {
+  // [12, 19, 3, 5, 2, 3, 7, 15, 23, 39, 2]
+  // si utilizza la libreria charts per stampare il grafico. in questo caso è un grafico a colonne è possibile specificare delle opzioni tipo colore colonne, quante colonne, le label ecc
+  var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+
+  var ctx = $("#myMessagesChart");
+  var myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      datasets: [{
+        label: "# of Visits",
+        data: data,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/partials/search.js":
 /*!*****************************************!*\
   !*** ./resources/js/partials/search.js ***!
@@ -104937,8 +105105,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

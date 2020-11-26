@@ -28,7 +28,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-        @yield('import')
+    @yield('import')
 
     {{-- Chart js
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
@@ -136,10 +136,10 @@
     </div>
     </nav>
 
-    <main class="py-4">
+    <main>
         @yield('content')
     </main>
     </div>
 </body>
-    
+
 </html>
