@@ -10903,9 +10903,20 @@ a.text-dark:focus {
   }
 }
 
+.navbar img.logo {
+  height: 50px;
+}
+
+.navbar .navbar-brand {
+  font-size: 1.75rem;
+}
+
+.navbar .nav-item a.nav-link {
+  font-size: 1.15rem;
+}
+
 .jumbotron-welcome {
   min-height: 60vh;
-  background: url("https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg");
   background-image: url(/images/jumbotron-welcome.jpg?70d31fb4b35ffc472fc2765e9bc3b64a);
   background-position: center;
   background-repeat: no-repeat;
