@@ -4,9 +4,14 @@
 // Variables
 @import 'variables';
 
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
 
 // Partials
 @import 'partials/navbar';
 @import 'partials/welcome';
+@import 'partials/searchbar';
+@import 'partials/search';
+

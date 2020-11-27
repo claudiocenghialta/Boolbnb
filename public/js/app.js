@@ -105048,7 +105048,6 @@ $(document).ready(function () {
         var source = $('#entry-template').html();
         var template = Handlebars.compile(source);
         $.each(risposta, function (i, apartment) {
-          console.log(apartment);
           var data = new Date(Date.parse(apartment.updated_at));
 
           if (apartment.immagini[0] == null) {
@@ -105062,17 +105061,21 @@ $(document).ready(function () {
           }
 
           var op = '';
+          var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
 
           for (var y = 0; y < apartment.optionals.length; y++) {
-            op += apartment.optionals[y] + "   ";
+            op += opt + apartment.optionals[y] + "</span></div>";
           }
 
           var context = {
+            titolo: apartment.titolo,
             immagini: img,
             descrizione: apartment.descrizione,
             indirizzo: apartment.indirizzo,
             updated_at: data.toLocaleString(),
-            optional: op
+            // optional: printOptional(apartment.optionals)
+            optional: op,
+            id: apartment.id
           };
           var html = template(context);
           $('.elenco').append(html);
@@ -105082,7 +105085,16 @@ $(document).ready(function () {
         alert("E' avvenuto un errore");
       }
     });
-  });
+  }); // function printOptional(optionals) {
+  //     var print = '';
+  //     var check = '<i class="fas fa-check text-info"></i>';
+  //     for (var i = 0; i < optionals.length; i++) {
+  //         console.log(check);
+  //         print +=  check + optionals[i];
+  //         console.log(print);
+  //     }
+  //     return print;
+  // }
 });
 
 /***/ }),

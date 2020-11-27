@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="jumbotron jumbotron-fluid jumbotron-welcome">
   <div class="container">
     {{-- <div class="col-lg-12"> --}}
@@ -13,6 +14,7 @@
           <div class="col-10 col-md-8">
             <input-search-indirizzo>
             </input-search-indirizzo>
+
           </div>
           <input type="submit" class="btn btn-primary" name="" value="Vai">
         </div>

@@ -2,6 +2,7 @@ var $ = require('jquery');
 const Handlebars = require("handlebars");
 $(document).ready(function(){
 
+
 $("#cerca").on('click', function() {
     $(".elenco").empty();
     var clat = $('#c-lat').val();
@@ -34,7 +35,7 @@ $("#cerca").on('click', function() {
                 optionals: optionals,
                 raggioKm: distanza,
                 lat: clat,
-                lng: clng
+                lng: clng,
             },
 
             success: function(risposta) {
@@ -43,7 +44,6 @@ $("#cerca").on('click', function() {
                 var template = Handlebars.compile(source);
 
                 $.each(risposta,function(i,apartment) {
-                    console.log(apartment);
                     var data = new Date(Date.parse(apartment.updated_at));
 
                     if (apartment.immagini[0] == null) {
@@ -57,18 +57,28 @@ $("#cerca").on('click', function() {
                     }
 
                     var op = '';
+
+                    var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
-                       op += apartment.optionals[y] + "   ";
+
+
+                       op += opt + apartment.optionals[y] + "</span></div>";
+
+
                    }
 
 
+
                     var context = {
+                        titolo: apartment.titolo,
                         immagini: img,
                         descrizione: apartment.descrizione,
                         indirizzo: apartment.indirizzo,
                         updated_at: data.toLocaleString(),
-                        optional: op
-                    }
+                        // optional: printOptional(apartment.optionals)
+                        optional: op,
+                        id: apartment.id
+                   }
 
                     var html = template(context);
 
@@ -83,5 +93,19 @@ $("#cerca").on('click', function() {
     );
 
 } )
+
+// function printOptional(optionals) {
+//     var print = '';
+//     var check = '<i class="fas fa-check text-info"></i>';
+//     for (var i = 0; i < optionals.length; i++) {
+//         console.log(check);
+//         print +=  check + optionals[i];
+//         console.log(print);
+//     }
+//     return print;
+
+// }
+
+
 
 });
