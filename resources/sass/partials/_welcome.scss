@@ -1,0 +1,47 @@
+.jumbotron-welcome {
+    min-height: 60vh;
+    // background: url('https://images.pexels.com/photos/1285625/pexels-photo-1285625.jpeg');
+    background-image: url('immagini-layout/jumbotron-welcome.jpg');
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    .titolo-jumbo{
+        font-size: 85px;
+        color: navy;
+    }
+}
+
+section#vetrina{
+    .container-card-welcome{
+        width: 90vw;
+        margin: 0 auto;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        .card.card-welcome{
+            flex: 0 0 350px;
+            .card-img-top{
+                max-height: 260px;
+            }
+        }
+    
+    }
+}
+
+section#host{
+    background-color: navy;
+    .btn-registrati{
+        font-size: 2.125rem;
+        border: 2px solid
+    }
+    
+}
+
+section#cities{
+    .card.card-welcome {
+        flex: 0 0 350px;
+
+        .card-img-top {
+            max-height: 220px;
+        }
+    }
+}

@@ -51,7 +51,7 @@ class SearchController extends Controller
         // $apartment['data_fine_sponsor']  = $apartment->SponsorApartments()->get()->sortByDesc('id');
         $apartment['data_fine_sponsor']  = Carbon::parse(SponsorApartment::where('apartment_id',$apartment->id)->pluck('data_fine')->sortDesc()->first());
         // se la data fine sponsor è passata allora mettiamo valore ''
-        ($apartment['data_fine_sponsor']->isPast()) ? $apartment['data_fine_sponsor']='': $apartment['data_fine_sponsor'];
+        ($apartment['data_fine_sponsor']->isPast()) ? $apartment['data_fine_sponsor']=0: $apartment['data_fine_sponsor']=1;
 
       // }
       //  else {
@@ -59,6 +59,8 @@ class SearchController extends Controller
       //   $apartments->forget($key);
       // }
     }
+    $apartments = $apartments->sortBy('distanzaKm');
+    $apartments = $apartments->sortByDesc('data_fine_sponsor');
     $optionals = Optional::all();
     return view('search',compact('apartments','optionals','lat','lng'));
 

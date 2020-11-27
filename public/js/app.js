@@ -8673,11 +8673,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      latitude: '',
-      longitude: ''
+      latitude: "",
+      longitude: ""
     };
   },
   mounted: function mounted() {
@@ -8687,15 +8713,15 @@ __webpack_require__.r(__webpack_exports__);
 
     (function () {
       var placesAutocomplete = places({
-        appId: 'pl3L7TF7T3Q6',
-        apiKey: '4b8aa1d10ced4e6a8b8c3fb1dc58072e',
-        container: document.querySelector('#inputMap')
+        appId: "pl3L7TF7T3Q6",
+        apiKey: "4b8aa1d10ced4e6a8b8c3fb1dc58072e",
+        container: document.querySelector("#inputMap")
       }).configure({
-        type: 'city'
+        type: "city"
       });
       var markers = [];
 
-      if (self.$refs.controllerLat !== '') {
+      if (self.$refs.controllerLat !== "") {
         if (self.$refs.controllerLat == self.$refs.lat) {
           self.latitude = self.$refs.controllerLat;
         } else {
@@ -8705,8 +8731,8 @@ __webpack_require__.r(__webpack_exports__);
         boh();
       }
 
-      placesAutocomplete.on('suggestions', handleOnSuggestions);
-      placesAutocomplete.on('change', handleOnChange);
+      placesAutocomplete.on("suggestions", handleOnSuggestions);
+      placesAutocomplete.on("change", handleOnChange);
 
       function boh() {
         self.latitude = self.$refs.controllerLat.val();
@@ -105091,8 +105117,8 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

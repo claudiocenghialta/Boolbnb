@@ -67,14 +67,16 @@ class ApartmentController extends Controller
           // $apartment['data_fine_sponsor']  = $apartment->SponsorApartments()->get()->sortByDesc('id');
           $apartment['data_fine_sponsor']  = Carbon::parse(SponsorApartment::where('apartment_id',$apartment->id)->pluck('data_fine')->sortDesc()->first());
           // se la data fine sponsor è passata allora mettiamo valore ''
-          ($apartment['data_fine_sponsor']->isPast()) ? $apartment['data_fine_sponsor']='': $apartment['data_fine_sponsor'];
+          ($apartment['data_fine_sponsor']->isPast()) ? $apartment['data_fine_sponsor']=0 : $apartment['data_fine_sponsor']=1;
 
         } else {
           // se gli optionals non corrispondono ai filtri di ricerca elimino l'appartamento dall'array
           $apartments->forget($key);
         }
       }
-     return response()->json($apartments);
+      $response = $apartments->sortBy('distanzaKm');
+      $response = $apartments->sortByDesc('data_fine_sponsor');
+     return response()->json($response);
     }
 
     public function attivaApp(request $request){
