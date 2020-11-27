@@ -10903,7 +10903,6 @@ a.text-dark:focus {
   }
 }
 
-
 .navbar img.logo {
   height: 50px;
 }
@@ -10959,11 +10958,9 @@ section#cities .card.card-welcome {
 
 section#cities .card.card-welcome .card-img-top {
   max-height: 220px;
+}
 
 .searchbar {
-  position: relative;
-  left: 0;
-  top: 0;
   float: left;
   border-radius: 5px;
   padding: 20px 0px;
@@ -10998,10 +10995,6 @@ section#cities .card.card-welcome .card-img-top {
   margin-right: 5px;
 }
 
-.searchbar .container .searchbar-dx {
-  margin-top: 30px;
-}
-
 .searchbar .container .searchbar-dx .sb-dx {
   width: 100%;
 }
@@ -11021,13 +11014,10 @@ section#cities .card.card-welcome .card-img-top {
 
 .container-elenco {
   float: left;
-  height: 100%;
 }
 
 .container-elenco .card.card-search {
   flex: 1 0 30%;
-  max-width: 300px;
-  max-width: 200px;
 }
 
 .container-elenco .card.card-search .optional-div .b {
@@ -11055,8 +11045,7 @@ section#cities .card.card-welcome .card-img-top {
   text-overflow: ellipsis;
 }
 
-.container-elenco .card-search:hover {
+.container-elenco .card-deck.elenco .card-search:hover {
   box-shadow: 2px 2px 5px grey;
-
 }
 
