@@ -1,0 +1,48 @@
+
+.main{
+    // overflow: hidden;
+    position: relative;
+    // height: calc(100vh - 55px);
+}
+
+.container-elenco{
+    float: left;
+    // overflow-y: auto;
+    height: 100%;
+    .card.card-search{
+        flex: 1 0 30%;
+
+        max-width: 300px;
+        max-width: 200px;
+        .optional-div{
+            // height: 40px;
+            .b{
+                display: inline-block;
+                i{
+                    color: green;
+                }
+                .optional{
+                    margin-right: 7px;
+                    font-size: 11px;
+                    font-weight: bold;
+                }
+            }
+
+        }
+        .decrizione-div{
+                margin-bottom: 15px;
+            p{
+                width: 100%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .card-search:hover{
+        // border: 1px groove slateblue;
+        box-shadow: 2px 2px 5px grey;
+
+    }
+
+}

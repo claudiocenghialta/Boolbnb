@@ -2,6 +2,7 @@ var $ = require('jquery');
 const Handlebars = require("handlebars");
 $(document).ready(function(){
 
+
 $("#cerca").on('click', function() {
     $(".elenco").empty();
     var clat = $('#c-lat').val();
@@ -43,7 +44,6 @@ $("#cerca").on('click', function() {
                 var template = Handlebars.compile(source);
 
                 $.each(risposta,function(i,apartment) {
-                    console.log(apartment);
                     var data = new Date(Date.parse(apartment.updated_at));
 
                     if (apartment.immagini[0] == null) {
@@ -60,11 +60,12 @@ $("#cerca").on('click', function() {
                     for (var y = 0; y < apartment.optionals.length; y++) {
                        op += apartment.optionals[y] + "   ";
                    }
-
+                   // var descrizione = apartment.descrizione.substring(0,Math.min(apartment.descrizione.length, trimmedString.lastIndexOf(" ")));
+                   var descrizione = cutString(apartment.descrizione, 100)
 
                     var context = {
                         immagini: img,
-                        descrizione: apartment.descrizione,
+                        descrizione: descrizione + "...",
                         indirizzo: apartment.indirizzo,
                         updated_at: data.toLocaleString(),
                         optional: op
@@ -83,5 +84,11 @@ $("#cerca").on('click', function() {
     );
 
 } )
+
+function cutString(s, n){
+    var cut= s.indexOf(' ', n);
+    if(cut== -1) return s;
+    return s.substring(0, cut)
+}
 
 });

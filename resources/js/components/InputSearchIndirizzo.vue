@@ -1,7 +1,7 @@
 <template>
 <div>
 
-<label for="indirizzo"><h2>CERCA IL TUO COVO</h2></label>
+
 <input type="search" id="inputMap" name="indirizzo" class="form-control"  placeholder="Dove Vuoi Cercare?" />
 <input type="hidden" id="lat" :value="latitude" name="lat" class="form-control" placeholder="Dove Vuoi Cercare?" />
 <input type="hidden" id="lng" :value="longitude" name="lng" class="form-control" placeholder="Dove Vuoi Cercare?" />
