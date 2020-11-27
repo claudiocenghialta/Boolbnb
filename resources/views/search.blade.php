@@ -56,10 +56,11 @@
 
     <div class="container container-elenco col-12 col-md-9">
         <div class="card-deck p-3 elenco">
+
           @foreach ($apartments as  $apartment)
 
                 <div class="card card-search mb-2">
-                <img class="card-img-top" src="{{ !empty($apartment->immagini[0]) ? (substr($apartment->immagini[0],0,4)=='http') ?($apartment->immagini[0]) : (asset('storage/'.$apartment->immagini[0])) : 'placeholders/placeholder-apartment.jpg'}}" alt="Card image cap" width="auto" height="220px">
+                <img class="card-img-top" src="{{ !empty($apartment->immagini[0]) ? (substr($apartment->immagini[0],0,4)=='http') ?($apartment->immagini[0]) : (asset('storage/'.$apartment->immagini[0])) : 'placeholders/placeholder-apartment.jpg'}}" alt="Card image cap" width="auto" height="180px">
                 <div class="card-body">
                   {{-- SESSION --}}
                   @guest
@@ -79,7 +80,7 @@
                   <div class="decrizione-div">
                       <p class="card-text testo-descrizione">{{ $apartment->descrizione }}</p>
                   </div>
-                  <p class="card-text"><small class="text-muted">Ultimo aggiornamento: {{ $apartment->updated_at->format('d-M-Y - h:m') }} </small></p>
+                  <p class="card-text"><small class="text-muted">Ultimo aggiornamento: {{ $apartment->updated_at->format('d/m/Y, h:m:s') }} </small></p>
 
                 </div>
               </div>
@@ -92,8 +93,12 @@
         </div>
     </div>
 </div>
-
-  @include('handlebar/template')
+@guest
+    @include('handlebar/gtemplate')
+@else
+    @include('handlebar/atemplate')
+@endguest
+ 
 
 
 

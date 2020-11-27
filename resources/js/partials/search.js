@@ -35,7 +35,7 @@ $("#cerca").on('click', function() {
                 optionals: optionals,
                 raggioKm: distanza,
                 lat: clat,
-                lng: clng
+                lng: clng,
             },
 
             success: function(risposta) {
@@ -57,19 +57,28 @@ $("#cerca").on('click', function() {
                     }
 
                     var op = '';
+
+                    var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
-                       op += apartment.optionals[y] + "   ";
+
+
+                       op += opt + apartment.optionals[y] + "</span></div>";
+
+
                    }
-                   // var descrizione = apartment.descrizione.substring(0,Math.min(apartment.descrizione.length, trimmedString.lastIndexOf(" ")));
-                   var descrizione = cutString(apartment.descrizione, 100)
+
+
 
                     var context = {
+                        titolo: apartment.titolo,
                         immagini: img,
-                        descrizione: descrizione + "...",
+                        descrizione: apartment.descrizione,
                         indirizzo: apartment.indirizzo,
                         updated_at: data.toLocaleString(),
-                        optional: op
-                    }
+                        // optional: printOptional(apartment.optionals)
+                        optional: op,
+                        id: apartment.id
+                   }
 
                     var html = template(context);
 
@@ -85,10 +94,18 @@ $("#cerca").on('click', function() {
 
 } )
 
-function cutString(s, n){
-    var cut= s.indexOf(' ', n);
-    if(cut== -1) return s;
-    return s.substring(0, cut)
-}
+// function printOptional(optionals) {
+//     var print = '';
+//     var check = '<i class="fas fa-check text-info"></i>';
+//     for (var i = 0; i < optionals.length; i++) {
+//         console.log(check);
+//         print +=  check + optionals[i];
+//         console.log(print);
+//     }
+//     return print;
+
+// }
+
+
 
 });

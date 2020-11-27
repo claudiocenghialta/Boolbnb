@@ -11,11 +11,9 @@
     height: 100%;
     .card.card-search{
         flex: 1 0 30%;
-
         max-width: 300px;
         max-width: 200px;
         .optional-div{
-            // height: 40px;
             .b{
                 display: inline-block;
                 i{
@@ -27,7 +25,6 @@
                     font-weight: bold;
                 }
             }
-
         }
         .decrizione-div{
                 margin-bottom: 15px;
@@ -42,7 +39,6 @@
     .card-search:hover{
         // border: 1px groove slateblue;
         box-shadow: 2px 2px 5px grey;
-
     }
 
 }
