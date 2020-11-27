@@ -9,7 +9,7 @@
   </ul>
 </div>
 @endif
-<form action="{{route('apartments.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
+<form action="{{route('apartments.store')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto mt-3">
   @csrf
   @method('POST')
   <label for="titolo">Titolo:</label>
@@ -39,7 +39,7 @@
          <label for="optional">{{$optional->nome}}</label>
          <input type="checkbox" name="optionals[]" value="{{$optional->id}}">
      @endforeach
- 
+
 
     <input type="submit" class="btn btn-primary" value="Invia">
     <div>

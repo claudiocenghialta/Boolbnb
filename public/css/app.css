@@ -10903,7 +10903,6 @@ a.text-dark:focus {
   }
 }
 
-
 .navbar img.logo {
   height: 50px;
 }
@@ -10959,6 +10958,7 @@ section#cities .card.card-welcome {
 
 section#cities .card.card-welcome .card-img-top {
   max-height: 220px;
+}
 
 .searchbar {
   position: relative;
@@ -11057,6 +11057,5 @@ section#cities .card.card-welcome .card-img-top {
 
 .container-elenco .card-search:hover {
   box-shadow: 2px 2px 5px grey;
-
 }
 
