@@ -10936,12 +10936,16 @@ section#host {
   background-color: navy;
 }
 
-section#host .host-image-container {
-  border-radius: 50%;
-  overflow: hidden;
+section#host .btn-registrati {
+  font-size: 2.125rem;
+  border: 2px solid;
 }
 
-section#cities {
-  height: 300px;
+section#cities .card.card-welcome {
+  flex: 0 0 350px;
+}
+
+section#cities .card.card-welcome .card-img-top {
+  max-height: 220px;
 }
 

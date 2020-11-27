@@ -29,12 +29,19 @@ section#vetrina{
 
 section#host{
     background-color: navy;
-    .host-image-container{
-        border-radius: 50%;
-        overflow: hidden;
+    .btn-registrati{
+        font-size: 2.125rem;
+        border: 2px solid
     }
+    
 }
 
 section#cities{
-    height: 300px;
+    .card.card-welcome {
+        flex: 0 0 350px;
+
+        .card-img-top {
+            max-height: 220px;
+        }
+    }
 }
