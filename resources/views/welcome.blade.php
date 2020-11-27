@@ -7,6 +7,7 @@
         <div class="col-md-8">
             <div id="app" class="mb-5">
                 <form class="form-search" action="{{route('search')}}" method="get">
+                <label for="indirizzo"><h2>CERCA IL TUO COVO</h2></label>
                   <input-search-indirizzo>
                   </input-search-indirizzo>
                   <input  type="submit" name="" value="cerca">

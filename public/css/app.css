@@ -10903,3 +10903,102 @@ a.text-dark:focus {
   }
 }
 
+.searchbar {
+  position: relative;
+  left: 0;
+  top: 0;
+  float: left;
+  border-radius: 5px;
+  padding: 20px 0px;
+  box-shadow: 2px 2px 5px gray;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #000080;
+  color: #d9d9d9;
+  height: 100%;
+}
+
+.searchbar .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.searchbar .container .searchbar-sx {
+  width: 100%;
+  padding: 0px;
+}
+
+.searchbar .container .searchbar-sx .search-optionals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.searchbar .container .searchbar-sx .search-optionals .optional-search {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.searchbar .container .searchbar-dx {
+  margin-top: 30px;
+}
+
+.searchbar .container .searchbar-dx .sb-dx {
+  width: 100%;
+}
+
+.searchbar .container .searchbar-dx .sb-dx label {
+  display: block;
+  margin-top: 20px;
+}
+
+.searchbar .container .searchbar-dx .sb-dx input {
+  border-radius: 5px;
+}
+
+.main {
+  position: relative;
+}
+
+.container-elenco {
+  float: left;
+  height: 100%;
+}
+
+.container-elenco .card.card-search {
+  flex: 1 0 30%;
+  max-width: 300px;
+  max-width: 200px;
+}
+
+.container-elenco .card.card-search .optional-div .b {
+  display: inline-block;
+}
+
+.container-elenco .card.card-search .optional-div .b i {
+  color: green;
+}
+
+.container-elenco .card.card-search .optional-div .b .optional {
+  margin-right: 7px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.container-elenco .card.card-search .decrizione-div {
+  margin-bottom: 15px;
+}
+
+.container-elenco .card.card-search .decrizione-div p {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container-elenco .card-search:hover {
+  box-shadow: 2px 2px 5px grey;
+}
+
