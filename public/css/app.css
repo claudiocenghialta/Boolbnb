@@ -10909,6 +10909,7 @@ a.text-dark:focus {
 
 .navbar .navbar-brand {
   font-size: 1.75rem;
+  font-weight: bold;
 }
 
 .navbar .nav-item a.nav-link {
@@ -11008,8 +11009,10 @@ section#cities .card.card-welcome .card-img-top {
   border-radius: 5px;
 }
 
-.main {
-  position: relative;
+.main:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .container-elenco {
@@ -11017,7 +11020,9 @@ section#cities .card.card-welcome .card-img-top {
 }
 
 .container-elenco .card.card-search {
-  flex: 1 0 30%;
+  flex: 1 1 25%;
+  max-width: 300px;
+  min-width: 200px;
 }
 
 .container-elenco .card.card-search .optional-div .b {
@@ -11047,5 +11052,26 @@ section#cities .card.card-welcome .card-img-top {
 
 .container-elenco .card-deck.elenco .card-search:hover {
   box-shadow: 2px 2px 5px grey;
+}
+
+footer .footer-top {
+  border-bottom: 1px solid white;
+}
+
+footer .logo-footer {
+  flex: 1 0 30%;
+}
+
+footer .logo-footer a {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+footer .logo-footer a img.logo {
+  height: 100px;
+}
+
+footer .contatti {
+  flex: 2 0 60%;
 }
 

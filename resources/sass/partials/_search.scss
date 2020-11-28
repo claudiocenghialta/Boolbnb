@@ -1,15 +1,19 @@
+.main:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 
-.main{
-    position: relative;
-}
+
 
 .container-elenco{
+    // flex: 1 1 100%;
     float: left;
     // height: 100%;
     .card.card-search{
-        flex: 1 0 30%;
-        // max-width: 300px;
-        // min-width: 200px;
+        flex: 1 1 25%;
+        max-width: 300px;
+        min-width: 200px;
         .optional-div{
             .b{
                 display: inline-block;

@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="searchbar-sx mt-2">
+            <div class="searchbar-sx">
                 <input type="hidden" id="c-lat" value="{{$lat}}" class="form-control" placeholder="?" />
                 <input type="hidden" id="c-lng" value="{{$lng}}" class="form-control" placeholder="?" />
                 <div class="col-12 search-optionals">
@@ -24,7 +24,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="searchbar-dx row mt-2">
+            <div class="searchbar-dx row mt-3">
                 <div class="col-12 col-sm-6 col-md-3 col-lg-12 form-group">
                     <label class="" for="numero_stanze">Numero di stanze</label>
                     <input class="form-control" type="number" id="numero_stanze" name="numero_stanze" value="">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="container container-elenco col-12 col-lg-9">
-        <div class="card-deck elenco justify-content-around align-items-middle">
+        <div class="card-deck elenco justify-content-center align-items-middle">
 
             @foreach ($apartments as $apartment)
 
