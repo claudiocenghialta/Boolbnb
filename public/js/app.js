@@ -105018,6 +105018,11 @@ function ricerca() {
   optionals = optionalsArray.join(); // l'array con gli id dei servizi viene mandato in forma di stringa. nel backend verrà ritradotto in un array
 
   var distanza = $('#radius').val();
+
+  if (distanza < 1) {
+    distanza = '20';
+  }
+
   $.ajax({
     url: "http://localhost:8000/api/search",
     method: "GET",

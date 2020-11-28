@@ -29,19 +29,19 @@
             <div class="col-12 searchbar-dx row">
                 <div class="col-3 col-md-12 form-group">
                     <label class="" for="numero_stanze">Numero di stanze</label>
-                    <input class="form-control" type="number" id="numero_stanze" name="numero_stanze" value="">
+                    <input class="form-control" type="number" id="numero_stanze" name="numero_stanze"  min="1" value="">
                 </div>
                 <div class="col-3 col-md-12 form-group">
                     <label class="" for="numero_letti">Numero di letti</label>
-                    <input class="form-control" type="number" id="numero_letti" name="numero_letti" value="">
+                    <input class="form-control" type="number" id="numero_letti" name="numero_letti" min="1" value="">
                 </div>
                 <div class="col-3 col-md-12 form-group">
                     <label class="" for="numero_bagni">Numero di Bagni</label>
-                    <input class="form-control" type="number" id="numero_bagni" name="numero_bagni" value="">
+                    <input class="form-control" type="number" id="numero_bagni" name="numero_bagni" min="1" value="">
                 </div>
                 <div class="col-3 col-md-12 form-group">
                     <label class="" for="">Raggio di ricerca</label>
-                    <input class="form-control" type="number" id="radius" name="raggioKm" value="20">
+                    <input class="form-control" type="number" id="radius" name="raggioKm" min="1" value="20">
                 </div>
                 <div class="col-4 col-md-8 offset-md-2 offset-4 form-group">
                 <button class="btn btn-outline-success button-search col-12" type="button" id="cerca" name="button">Cerca</button>
@@ -98,7 +98,7 @@
 @else
     @include('handlebar/atemplate')
 @endguest
- 
+
 
 
 
