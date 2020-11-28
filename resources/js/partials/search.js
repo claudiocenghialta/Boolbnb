@@ -4,6 +4,19 @@ $(document).ready(function(){
 
 
 $("#cerca").on('click', function() {
+    ricerca();
+} )
+
+$("input").on('keydown', function() {
+    if ( event.which == 13 || event.keycode == 13){
+    ricerca();
+    }
+} )
+
+});
+
+
+function ricerca(){
     $(".elenco").empty();
     var clat = $('#c-lat').val();
     var clng = $('#c-lng').val();
@@ -60,14 +73,8 @@ $("#cerca").on('click', function() {
 
                     var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
-
-
                        op += opt + apartment.optionals[y] + "</span></div>";
-
-
                    }
-
-
 
                     var context = {
                         titolo: apartment.titolo,
@@ -79,9 +86,7 @@ $("#cerca").on('click', function() {
                         optional: op,
                         id: apartment.id
                    }
-
                     var html = template(context);
-
                     $('.elenco').append(html);
                 });
             },
@@ -91,21 +96,4 @@ $("#cerca").on('click', function() {
         }
 
     );
-
-} )
-
-// function printOptional(optionals) {
-//     var print = '';
-//     var check = '<i class="fas fa-check text-info"></i>';
-//     for (var i = 0; i < optionals.length; i++) {
-//         console.log(check);
-//         print +=  check + optionals[i];
-//         console.log(print);
-//     }
-//     return print;
-
-// }
-
-
-
-});
+}
