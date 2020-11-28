@@ -10972,6 +10972,10 @@ section#cities .card.card-welcome .card-img-top {
   color: #38c172;
 }
 
+.ap-address em {
+  color: #38c172;
+}
+
 .searchbar {
   position: relative;
   left: 0;
