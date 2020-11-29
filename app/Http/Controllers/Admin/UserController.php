@@ -123,4 +123,18 @@ class UserController extends Controller
         $user->delete();
         return view('welcome');
     }
+    public function deleteUserImg(User $user)
+    {
+      // cancello immagine da storage
+        Storage::disk('public')->delete($user->avatar);
+
+      // cancello immagine da tabella
+      $user->avatar = null;
+      $saved = $user->update();
+        if ($saved) {
+            // torno alla edit dello user
+              return redirect()->route('users.edit',  $user->id)->with('status',"Hai cancellato l'immagine");
+        }
+
+    }
 }

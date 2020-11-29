@@ -12,23 +12,24 @@
 @endif
 
 <h1 class="text-center text-primary mt-3">Modifica il profilo</h1>
-<div class="card mb-3 mx-auto col-5" >
+<div class="card mb-3 mx-auto col-5">
   <div class="row no-gutters">
     <div class="col-md-4 pt-3">
       @if (empty($user->avatar))
-      <img class="img-fluid rounded mx-auto card-img-top" src="{{asset('placeholders/placeholder_avatar.svg')}}" alt="avatar">
+      <img class="img-fluid rounded mx-auto card-img-top" src="{{asset('placeholders/placeholder_avatar.svg')}}"
+        alt="avatar">
       @else
       <img class="img-fluid rounded mx-auto card-img-top"
         src="{{(substr($user->avatar,0,4)=='http') ?($user->avatar) : (asset('storage/'.$user->avatar))}}"
         alt="{{$user->nome. '-' . $user->cognome}}">
       {{-- @endif --}}
-      <form action="{{ route('images.destroy', $user->avatar )}}" method="post">
+      <form action="{{ route('user.deleteImg', $user )}}" method="post">
         @csrf
-        @method('DELETE')
-          <button type="submit" name="button" class="btn btn-alert btn-delete-alert text-danger">X</button>
+        @method('POST')
+        <button type="submit" name="button" class="btn btn-alert btn-delete-alert text-danger">X</button>
       </form>
       @endif
-        <h5 class="card-title text-center font-weight-bold ">{{$user->nome}}</h5>
+      <h5 class="card-title text-center font-weight-bold ">{{$user->nome}}</h5>
     </div>
     <div class="col-md-8">
       <div class="card-body">

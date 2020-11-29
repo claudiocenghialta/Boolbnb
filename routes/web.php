@@ -29,6 +29,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function (
   // Route::get('apartments/show/{slug}','ApartmentController@show')->name('apartments.slug');
   Route::resource('images', 'ImageController');
   Route::resource('users', 'UserController');
+  Route::post('deleteUserImg/{user}', 'UserController@deleteUserImg')->name('user.deleteImg');
   Route::resource('messages', 'MessageController');
   Route::get('sent', 'MessageController@sent')->name('messages.sent');
   // Route::delete('/image/destroy/{image}', 'ImageController@destroy')->name('image.destroy');
