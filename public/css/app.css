@@ -10916,6 +10916,10 @@ a.text-dark:focus {
   font-size: 1.15rem;
 }
 
+main {
+  min-height: 70vh;
+}
+
 .jumbotron-welcome {
   min-height: 60vh;
   background-image: url(/images/jumbotron-welcome.jpg?70d31fb4b35ffc472fc2765e9bc3b64a);
@@ -11054,7 +11058,6 @@ section#cities .card.card-welcome .card-img-top {
   box-shadow: 2px 2px 5px grey;
 }
 
-
 .carousel-show a[class^=carousel-control] .carousel-control-prev-icon,
 .carousel-show a[class^=carousel-control] .carousel-control-next-icon {
   background-image: none;
@@ -11084,6 +11087,7 @@ section#cities .card.card-welcome .card-img-top {
 .messaggi li.messaggio-inviato {
   padding: 7px 30px;
   border-radius: 5px;
+}
 
 footer .footer-top {
   border-bottom: 1px solid white;
@@ -11104,6 +11108,5 @@ footer .logo-footer a img.logo {
 
 footer .contatti {
   flex: 2 0 60%;
-
 }
 
