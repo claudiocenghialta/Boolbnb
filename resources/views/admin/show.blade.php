@@ -97,54 +97,61 @@
   </div>
   @if ($proprietario)
   {{-- Sezione per proprietario appartamento --}}
-  <a href="{{ route('apartments.edit', $apartment->id )}}">Edit</a>
-  <form action="{{ route('apartments.destroy', $apartment->id )}}" method="post">
-    @csrf
-    @method('DELETE')
-    <button type="submit" name="button" class="btn btn-danger btn-delete-alert">Delete</button>
-  </form>
+  <div class="d-flex justify-content-around col-4 offset-4">
+    <a class="btn btn-primary" href="{{ route('apartments.edit', $apartment->id )}}">Edit</a>
+    <form action="{{ route('apartments.destroy', $apartment->id )}}" method="post">
+      @csrf
+      @method('DELETE')
+      <button type="submit" name="button" class="btn btn-danger btn-delete-alert">Delete</button>
+    </form>
+  </div>
+
 
   {{-- aggiungere sponsorizzazione --}}
-  <label for="sponsor">Sponsorizza</label>
+  <h2 for="sponsor" class="text-center text-primary mt-5">Sponsorizza</h2>
 
   @if ($sponsorizzato == null)
-  <div class="">
-    Non hai sponsorizzazioni attive su questo appartamento
+  <div class="text-center bg-danger">
+    Non hai sponsorizzazioni attive su questo appartamento!
   </div>
   @else
-  <div class="">
+  <div class="text-center bg-warning">
     L'appertamento è sponsorizzato fino al {{$sponsorizzato->format('d-M-Y - H:m')}}
   </div>
   @endif
 
   {{-- prova per sponsor --}}
+  <div class="card-deck justify-content-around text-center">
+    @foreach ($sponsors as $sponsor)
+    <form action="{{route('payment.index')}}" method="post" enctype="multipart/form-data" class="card col-lg-4 mt-4 mb-5 border border-primary text-primary pt-3 pb-3">
+      {{-- <div class="card"> --}}
+        <h2 class="card-title">{{$sponsor->nome}}</h2>
+        <h2 class="card-title">€ {{$sponsor->costo}}</h2>
+        <hr>
+        <h5 class="card-title">Sponsorizza il tuo appartamento per {{$sponsor->durata}} ore!</h5>
+        <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
+        <input type="hidden" name="costo" value="{{$sponsor->costo}}">
+        <input type="hidden" name="sponsor_id" value="{{$sponsor->id}}">
+        @csrf
+        @method('GET')
+        <input type="submit" class="btn btn-success" value="Acquista">
+      {{-- </div> --}}
+    </form>
+    @endforeach
+    {{-- </form> --}}
+  </div>
 
-  @foreach ($sponsors as $sponsor)
-  <form action="{{route('payment.index')}}" method="post" enctype="multipart/form-data" class="card col-5 mx-auto">
-    <div class="card">
-      <h1 class="card-title">{{$sponsor->nome}}</h1>
-      <h2 class="card-title">€ {{$sponsor->costo}}</h2>
-      <input type="hidden" name="apartment_id" value="{{$apartment->id}}">
-      <input type="hidden" name="costo" value="{{$sponsor->costo}}">
-      <input type="hidden" name="sponsor_id" value="{{$sponsor->id}}">
-      @csrf
-      @method('GET')
-      <input type="submit" class="btn btn-primary" value="Acquista Sponsorizzazione">
-    </div>
-  </form>
-  @endforeach
-  </form>
 
   {{-- inizio statistiche --}}
-  <div id="stats" class="text-center" data-apartment-id="{{$apartment->id}}">
-    <h3>Le tue statistiche</h3>
-    <div class="">
-      <h4>Statistiche visualizzazioni</h4>
-      <canvas class="col offset-sm-2 col-sm-8" id="myVisitChart" {{-- width="400" height="400" --}}></canvas>
+  <div id="stats" class="text-center text-primary mb-5" data-apartment-id="{{$apartment->id}}">
+    <h2>Le tue statistiche</h2>
+    <div class="mt-3">
+      <h5>Visualizzazioni:</h5>
+      <canvas class="col offset-sm-2 col-sm-10 mx-auto" id="myVisitChart" {{-- width="400" height="400" --}}></canvas>
     </div>
-    <div>
-      <h4>Statistiche messaggi ricevuti</h4>
-      <canvas class="col offset-sm-2 col-sm-8" id="myMessagesChart" {{-- width="400" height="400" --}}></canvas>
+    <div class="mt-3">
+      <h5>Messaggi ricevuti:</h5>
+      <canvas class="col offset-sm-2 col-sm-10 mx-auto" id="myMessagesChart" {{-- width="400" height="400" --}}></canvas>
     </div>
   </div>
   {{-- fine statistiche --}}
