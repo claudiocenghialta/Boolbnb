@@ -11059,3 +11059,34 @@ section#cities .card.card-welcome .card-img-top {
   box-shadow: 2px 2px 5px grey;
 }
 
+.carousel-show a[class^=carousel-control] .carousel-control-prev-icon,
+.carousel-show a[class^=carousel-control] .carousel-control-next-icon {
+  background-image: none;
+  font-size: 1.25rem;
+}
+
+.dati-appartamento #descrizione {
+  flex: 1 1 50%;
+}
+
+.dati-appartamento #caratteristiche {
+  flex: 1 1 auto;
+}
+
+.dati-appartamento #optionals {
+  flex: 1 1 auto;
+}
+
+.messaggi {
+  border-radius: 5px;
+}
+
+.messaggi img.avatar-messaggio {
+  max-height: 100px;
+}
+
+.messaggi li.messaggio-inviato {
+  padding: 7px 30px;
+  border-radius: 5px;
+}
+

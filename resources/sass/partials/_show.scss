@@ -1,0 +1,40 @@
+
+.carousel-show{
+    // tolgo immagine di sfondo a controlli per carousel perchè metto icone fontawesome così possiamo cambiare colore
+    a[class^="carousel-control"]{
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon{
+            background-image: none;
+            font-size: 1.25rem;;
+        }
+    }
+}
+
+.dati-appartamento{
+    
+    #descrizione{
+        flex: 1 1 50%;
+    }
+    #caratteristiche{
+        flex: 1 1 auto;
+
+    } 
+    #optionals{
+        flex: 1 1 auto;
+
+    }
+}
+
+.messaggi{
+    border-radius: 5px;
+    // border: 1px solid $green;
+    img.avatar-messaggio{
+        max-height: 100px;
+    }
+    li.messaggio-inviato{
+        padding: 7px 30px;
+        border-radius: 5px;
+        // border: 1px solid lightgrey;
+    }
+
+}
