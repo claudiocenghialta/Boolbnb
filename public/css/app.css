@@ -10903,13 +10903,13 @@ a.text-dark:focus {
   }
 }
 
-
 .navbar img.logo {
   height: 50px;
 }
 
 .navbar .navbar-brand {
   font-size: 1.75rem;
+  font-weight: bold;
 }
 
 .navbar .nav-item a.nav-link {
@@ -10959,11 +10959,9 @@ section#cities .card.card-welcome {
 
 section#cities .card.card-welcome .card-img-top {
   max-height: 220px;
+}
 
 .searchbar {
-  position: relative;
-  left: 0;
-  top: 0;
   float: left;
   border-radius: 5px;
   padding: 20px 0px;
@@ -10998,10 +10996,6 @@ section#cities .card.card-welcome .card-img-top {
   margin-right: 5px;
 }
 
-.searchbar .container .searchbar-dx {
-  margin-top: 30px;
-}
-
 .searchbar .container .searchbar-dx .sb-dx {
   width: 100%;
 }
@@ -11015,19 +11009,20 @@ section#cities .card.card-welcome .card-img-top {
   border-radius: 5px;
 }
 
-.main {
-  position: relative;
+.main:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .container-elenco {
   float: left;
-  height: 100%;
 }
 
 .container-elenco .card.card-search {
-  flex: 1 0 30%;
+  flex: 1 1 25%;
   max-width: 300px;
-  max-width: 200px;
+  min-width: 200px;
 }
 
 .container-elenco .card.card-search .optional-div .b {
@@ -11055,8 +11050,28 @@ section#cities .card.card-welcome .card-img-top {
   text-overflow: ellipsis;
 }
 
-.container-elenco .card-search:hover {
+.container-elenco .card-deck.elenco .card-search:hover {
   box-shadow: 2px 2px 5px grey;
+}
 
+footer .footer-top {
+  border-bottom: 1px solid white;
+}
+
+footer .logo-footer {
+  flex: 1 0 30%;
+}
+
+footer .logo-footer a {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+footer .logo-footer a img.logo {
+  height: 100px;
+}
+
+footer .contatti {
+  flex: 2 0 60%;
 }
 
