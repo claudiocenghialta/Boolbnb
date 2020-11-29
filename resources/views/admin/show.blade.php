@@ -147,11 +147,11 @@
     <h2>Le tue statistiche</h2>
     <div class="mt-3">
       <h5>Visualizzazioni:</h5>
-      <canvas class="col offset-sm-2 col-sm-10 mx-auto" id="myVisitChart" {{-- width="400" height="400" --}}></canvas>
+      <canvas class="col-12 offset-md-2 col-md-10 mx-auto" id="myVisitChart" {{-- width="400" height="400" --}}></canvas>
     </div>
     <div class="mt-3">
       <h5>Messaggi ricevuti:</h5>
-      <canvas class="col offset-sm-2 col-sm-10 mx-auto" id="myMessagesChart" {{-- width="400" height="400" --}}></canvas>
+      <canvas class="col-12 offset-md-2 col-md-10 mx-auto" id="myMessagesChart" {{-- width="400" height="400" --}}></canvas>
     </div>
   </div>
   {{-- fine statistiche --}}
