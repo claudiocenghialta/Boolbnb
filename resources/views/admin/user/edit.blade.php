@@ -15,6 +15,7 @@
 <div class="card mb-3 mx-auto col-5">
   <div class="row no-gutters">
     <div class="col-md-4 pt-3">
+
       @if (empty($user->avatar))
       <img class="img-fluid rounded mx-auto card-img-top" src="{{asset('placeholders/placeholder_avatar.svg')}}"
         alt="avatar">

@@ -9,8 +9,24 @@
   </ul>
 </div>
 @endif
+<h1 class="text-center text-primary mt-3">Modifica l'appartamento</h1>
+{{-- IMMAGINI SOTTO IL TITOLO --}}
+{{-- <div class="card-deck mx-auto justify-content-center">
+  @foreach ($images as $img)
+  <div class="card col-lg-4">
+    <img class="img-fluid rounded mx-auto mt-3"
+      src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
+      alt="{{$apartment->titolo}}">
+    <form action="{{ route('images.destroy', $img->id )}}" method="post" class="text-center">
+      @csrf
+      @method('DELETE')
+      <button type="submit" name="button" class="btn btn-alert btn-delete-alert text-danger">Delete</button>
+    </form>
+  </div>
+  @endforeach
+</div> --}}
 <form action="{{route('apartments.update', $apartment->id)}}" method="post" enctype="multipart/form-data"
-  class="card col-5 mx-auto">
+  class="card col-sm-6 col-lg-6 mx-auto mb-4 pt-3 pb-3 mt-3">
   @csrf
   @method('PATCH')
   <label for="titolo">Titolo:</label>
@@ -22,7 +38,7 @@
     @else
     <label for="img">Immagine di copertina</label>
     <div class="alert alert-danger">
-      Hai già caricato tutte le immagini a disposizione!!!!!!!!!!!!!
+      Hai già caricato tutte le immagini a disposizione!
     </div>
     @endif
 
@@ -47,23 +63,29 @@
         <input-edit-indirizzo >
       </input-edit-indirizzo>
       </div>
-     @foreach ($optionals as $optional)
-        <label for="optional">{{$optional->nome}}</label>
-        <input type="checkbox" name="optionals[]" value="{{$optional->id}}"{{($apartment->optionals->contains($optional->id) ? 'checked' : '')}}>
-    @endforeach
+      <div class="mt-3">
+       @foreach ($optionals as $optional)
+         <div class="col-lg-4 pl-0">
+            <label for="optional">{{$optional->nome}}</label>
+            <input type="checkbox" name="optionals[]" value="{{$optional->id}}"{{($apartment->optionals->contains($optional->id) ? 'checked' : '')}}>
+         </div>
+       @endforeach
+      </div>
     <input type="submit" class="btn btn-primary" value="Salva">
 </form>
-@foreach ($images as $img)
-<div class="">
-  <img class="img-fluid rounded mx-auto"
-    src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
-    alt="{{$apartment->titolo}}">
-  <form action="{{ route('images.destroy', $img->id )}}" method="post">
-    @csrf
-    @method('DELETE')
-    <button type="submit" name="button" class="btn btn-alert btn-delete-alert">Delete</button>
-  </form>
+<div class="card-deck mx-auto justify-content-center">
+  @foreach ($images as $img)
+  <div class="card col-lg-4">
+    <img class="img-fluid rounded mx-auto mt-3"
+      src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
+      alt="{{$apartment->titolo}}">
+    <form action="{{ route('images.destroy', $img->id )}}" method="post" class="text-center">
+      @csrf
+      @method('DELETE')
+      <button type="submit" name="button" class="btn btn-alert btn-delete-alert text-danger">Delete</button>
+    </form>
+  </div>
+  @endforeach
 </div>
 
-@endforeach
 @endsection

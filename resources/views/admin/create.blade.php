@@ -9,7 +9,7 @@
   </ul>
 </div>
 @endif
-<h2 class="text-primary text-center mt-3">Nuovo appartamento</h2>
+<h1 class="text-center text-primary mt-3">Nuovo appartamento</h1>
 <form action="{{route('apartments.store')}}" method="post" enctype="multipart/form-data" class="card col-6 mx-auto pt-3 mt-3 mb-4">
   @csrf
   @method('POST')

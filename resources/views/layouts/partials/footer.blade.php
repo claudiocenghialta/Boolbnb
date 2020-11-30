@@ -18,20 +18,20 @@
                 </a>
             </div>
             <div class="contatti d-flex justify-content-around flex-wrap align-items-center">
-                <p class="mr-3"><a class="text-white" href="https://github.com/claudiocenghialta"><i
+                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/claudiocenghialta"><i
                             class="fab fa-github mr-2"></i>Claudio Cenghialta</a>
                 </p>
-                <p class="mr-3"><a class="text-white" href="https://github.com/MGF2"><i
+                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/MGF2"><i
                             class="fab fa-github mr-2"></i>Martina
                         Fiore</a>
                 </p>
-                <p class="mr-3"><a class="text-white" href="https://github.com/Angel2676"><i
+                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/Angel2676"><i
                             class="fab fa-github mr-2"></i>Angelo
                         Imperiale</a></p>
-                <p class="mr-3"><a class="text-white" href="https://github.com/Ivan1005"><i
+                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/Ivan1005"><i
                             class="fab fa-github mr-2"></i>Ivan
                         Mattera</a></p>
-                <p class="mr-3"><a class="text-white" href="https://github.com/RiccardoP41"><i
+                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/RiccardoP41"><i
                             class="fab fa-github mr-2"></i>Riccardo
                         Pasini</a></p>
             </div>

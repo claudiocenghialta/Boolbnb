@@ -10916,6 +10916,10 @@ a.text-dark:focus {
   font-size: 1.15rem;
 }
 
+main {
+  min-height: 70vh;
+}
+
 .jumbotron-welcome {
   min-height: 60vh;
   background-image: url(/images/jumbotron-welcome.jpg?70d31fb4b35ffc472fc2765e9bc3b64a);
