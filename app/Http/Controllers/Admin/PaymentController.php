@@ -71,7 +71,7 @@ class PaymentController extends Controller
           $request['data_fine'] = Carbon::parse($request['data_inizio'])->addHours($durata);
           // scrivo dati su database e restituisco JSON di risposta
           $sponsorApartment = SponsorApartment::create($request->all());
-          return redirect()->route('apartments.show', $data['apartment_id'])->with('success_message', 'Transaction succesSful. The ID is'. $transaction->id);
+          return redirect()->route('apartments.show', $data['apartment_id'])->with('success_message', 'Pagamento effettuato. Transazione n. '. $transaction->id);
       } else {
           $errorString = "";
 

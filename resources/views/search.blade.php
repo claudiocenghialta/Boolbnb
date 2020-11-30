@@ -88,8 +88,9 @@
                     <div class="decrizione-div">
                         <p class="card-text testo-descrizione">{{ $apartment->descrizione }}</p>
                     </div>
-                    <p class="card-text"><small class="text-muted">Ultimo aggiornamento:
-                            {{ $apartment->updated_at->format('d/m/Y, h:m:s') }} </small></p>
+                    <small class="card-text"><i class="fas fa-map-marker-alt text-primary"></i> {{ $apartment->indirizzo }}</small>
+                    {{-- <p class="card-text"><small class="">Ultimo aggiornamento:
+                            {{ $apartment->updated_at->format('d/m/Y, h:m:s') }} </small></p> --}}
 
                 </div>
             </div>

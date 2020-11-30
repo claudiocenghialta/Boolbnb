@@ -19,7 +19,8 @@
               <div class="decrizione-div">
                 <p class="card-text testo-descrizione">{{descrizione}}</p>
               </div>
-              <p class="card-text"><small class="text-muted">Ultimo aggiornamento: {{ updated_at }}</small></p>
+              <small class="card-text"><i class="fas fa-map-marker-alt text-primary"></i> {{ indirizzo }}</small>
+
           </div>
       </div>
 

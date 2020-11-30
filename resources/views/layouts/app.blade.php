@@ -46,7 +46,7 @@
 </head>
 
 <body>
-    <div id="appi">
+    {{-- <div id="appi"> --}}
         @include('layouts.partials.navbar')
 
         <main>
@@ -54,10 +54,9 @@
         </main>
 
         @include('layouts.partials.footer')
-    </div>
+    {{-- </div> --}}
 
 
 </body>
 
 </html>
-
