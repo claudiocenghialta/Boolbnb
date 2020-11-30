@@ -13,15 +13,47 @@ $(document).ready(function() {
             var clng = $("#lng").val();
         }
 
-        var optionalsArray = [];
+$("#cerca").on('click', function() {
+    ricerca();
+} )
 
-        $("input[name='optionals[]']:checked").each(function() {
-            optionalsArray.push($(this).val());
-        });
+$("input").on('keydown', function() {
+    if ( event.which == 13 || event.keycode == 13){
+    ricerca();
+    }
+} )
+
+
+
+});
+
+
+function ricerca(){
+    $(".elenco").empty();
+    var clat = $('#c-lat').val();
+    var clng = $('#c-lng').val();
+    if ($('#inputMap').val() == '') {
+        $('#controllerLat').val(clat);
+        $('#controllerLng').val(clng);
+    }else {
+        var clat = $('#lat').val();
+        var clng = $('#lng').val();
+    };
+
+    var optionalsArray = [];
+
+    $("input[name='optionals[]']:checked").each(function (){
+        optionalsArray.push($(this).val());
+    });
         optionals = optionalsArray.join(); // l'array con gli id dei servizi viene mandato in forma di stringa. nel backend verrà ritradotto in un array
 
-        var distanza = $("#radius").val();
-        $.ajax({
+    var distanza = $('#radius').val();
+    if (distanza < 1) {
+        distanza = '20';
+    }
+
+    $.ajax(
+        {
             url: "http://localhost:8000/api/search",
             method: "GET",
             data: {
@@ -57,8 +89,8 @@ $(document).ready(function() {
                     var opt =
                         '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
-                        op += opt + apartment.optionals[y] + "</span></div>";
-                    }
+                       op += opt + apartment.optionals[y] + "</span></div>";
+                   }
 
                     var context = {
                         titolo: apartment.titolo,
@@ -69,11 +101,9 @@ $(document).ready(function() {
                         // optional: printOptional(apartment.optionals)
                         optional: op,
                         id: apartment.id
-                    };
-
+                   }
                     var html = template(context);
-
-                    $(".elenco").append(html);
+                    $('.elenco').append(html);
                 });
             },
             error: function() {
@@ -82,15 +112,5 @@ $(document).ready(function() {
         });
     });
 
-    // function printOptional(optionals) {
-    //     var print = '';
-    //     var check = '<i class="fas fa-check text-info"></i>';
-    //     for (var i = 0; i < optionals.length; i++) {
-    //         console.log(check);
-    //         print +=  check + optionals[i];
-    //         console.log(print);
-    //     }
-    //     return print;
-
-    // }
-});
+    );
+}

@@ -10961,6 +10961,22 @@ section#cities .card.card-welcome .card-img-top {
   max-height: 220px;
 }
 
+.ap-icon-clear {
+  display: none;
+}
+
+.ap-name {
+  color: black;
+}
+
+.ap-name em {
+  color: #38c172;
+}
+
+.ap-address em {
+  color: #38c172;
+}
+
 .searchbar {
   float: left;
   border-radius: 5px;

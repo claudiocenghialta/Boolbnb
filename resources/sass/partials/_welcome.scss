@@ -23,7 +23,7 @@ section#vetrina{
                 max-height: 260px;
             }
         }
-    
+
     }
 }
 
@@ -33,7 +33,7 @@ section#host{
         font-size: 2.125rem;
         border: 2px solid
     }
-    
+
 }
 
 section#cities{
@@ -44,4 +44,21 @@ section#cities{
             max-height: 220px;
         }
     }
+}
+
+
+.ap-icon-clear{
+    display: none;
+}
+
+.ap-name{
+    color:black;
+}
+
+.ap-name em{
+    color:rgb(56,193,114);
+}
+
+.ap-address em{
+    color:rgb(56,193,114);
 }
