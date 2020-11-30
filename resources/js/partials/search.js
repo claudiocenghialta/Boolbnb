@@ -57,6 +57,9 @@ function ricerca(){
             },
 
             success: function(risposta) {
+                if (risposta.length == 0) {
+                    $('.elenco').html(`<div class="mt-5"><h3>Nessun risultato!</h3></div>`)
+                }
                 var source = $("#entry-template").html();
 
                 var template = Handlebars.compile(source);

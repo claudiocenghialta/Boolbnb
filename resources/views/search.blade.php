@@ -55,7 +55,11 @@
 
     <div class="container container-elenco col-12 col-lg-9">
         <div class="card-deck elenco justify-content-center align-items-middle">
-
+        @if (count($apartments) == 0)
+            <div class="mt-5">
+                <h3>Nessun risultato!</h3>
+            </div>
+        @endif
             @foreach ($apartments as $apartment)
 
             <div class="card card-search mb-3">

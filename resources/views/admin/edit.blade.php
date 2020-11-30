@@ -32,11 +32,11 @@
   <label for="titolo">Titolo:</label>
   <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
   @if ($immaginiRimanenti != 0)
-  @for ($i=0; $i < $immaginiRimanenti; $i++) <label for="img{{$i+1}}">Immagine di copertina</label>
+  @for ($i=$immaginiRimanenti; $i > 0; $i--) <label for="img{{$i+1}}">{{($i == 5)? 'Immagine di copertina' : 'Immagine'}}</label>
     <input type="file" name="img{{$i+1}}" accept="image/*">
     @endfor
     @else
-    <label for="img">Immagine di copertina</label>
+    <label for="img">Immagine</label>
     <div class="alert alert-danger">
       Hai già caricato tutte le immagini a disposizione!
     </div>
