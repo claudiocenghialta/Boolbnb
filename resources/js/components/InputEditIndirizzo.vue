@@ -16,14 +16,16 @@
 
 <script>
     export default {
+    props:['ind'],
         data(){
             return{
             latitude: '',
             longitude: '',
-            ind:''
+
             };
         },
         mounted() {
+        console.log(ind);
         var places = require('places.js');
         var self = this;
         (function() {

@@ -10,7 +10,7 @@
 </div>
 @endif
 <h1 class="text-center text-primary mt-3">Nuovo appartamento</h1>
-<form action="{{route('apartments.store')}}" method="post" enctype="multipart/form-data" class="card col-6 mx-auto pt-3 mt-3 mb-4">
+<form action="{{route('apartments.store')}}" method="post" enctype="multipart/form-data" class="card col-lg-6 mx-auto pt-3 mt-3 mb-4">
   @csrf
   @method('POST')
   <label for="titolo">Titolo:</label>

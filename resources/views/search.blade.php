@@ -54,9 +54,9 @@
     </div>
 
     <div class="container container-elenco col-12 col-lg-9">
-        <div class="card-deck elenco justify-content-center align-items-middle">
+        <div class="card-deck elenco justify-content-start align-items-middle">
         @if (count($apartments) == 0)
-            <div class="mt-5">
+            <div class="ml-5 mt-5">
                 <h3>Nessun risultato!</h3>
             </div>
         @endif

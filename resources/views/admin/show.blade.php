@@ -27,7 +27,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-primary"></li>
 
     </ol>
-    <div class="carousel-inner col-md-8 offset-md-2">
+    <div class="carousel-inner col-md-8 offset-md-2" id="myCarousel">
       <div class="carousel-item active">
         <img src="{{asset('placeholders/placeholder-apartment.jpg')}}" class="d-block w-100" alt="placeholder">
       </div>
@@ -42,7 +42,7 @@
       {{-- operatore ternario, se è la prima immagine imposto classe active--}}
       @endforeach
     </ol>
-    <div class="carousel-inner col-md-8 offset-md-2">
+    <div class="carousel-inner col-md-8 offset-md-2" id="myCarousel">
       @foreach ($images as $key => $img)
       {{-- secondo foreach per caricare tutte le sigole immagini--}}
       <div class="carousel-item {{($key == 0)?'active':''}}">

@@ -11040,7 +11040,7 @@ section#cities .card.card-welcome .card-img-top {
 }
 
 .container-elenco .card.card-search {
-  flex: 1 1 25%;
+  flex: 0 0 25%;
   max-width: 300px;
   min-width: 200px;
 }
@@ -11103,6 +11103,15 @@ section#cities .card.card-welcome .card-img-top {
 .messaggi li.messaggio-inviato {
   padding: 7px 30px;
   border-radius: 5px;
+}
+
+.cust-flex {
+  flex: 0, 0, 300px;
+  overflow: auto;
+}
+
+.cust-flex .card {
+  min-width: 300px;
 }
 
 footer .footer-top {

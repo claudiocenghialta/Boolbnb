@@ -10,10 +10,9 @@
 </div>
 @endif
 <h1 class="text-center text-primary mt-3">Modifica l'appartamento</h1>
-{{-- IMMAGINI SOTTO IL TITOLO --}}
-{{-- <div class="card-deck mx-auto justify-content-center">
+<div class="d-flex mx-auto cust-flex pl-3 pr-3">
   @foreach ($images as $img)
-  <div class="card col-lg-4">
+  <div class="card mt-3 col-lg-4">
     <img class="img-fluid rounded mx-auto mt-3"
       src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
       alt="{{$apartment->titolo}}">
@@ -24,16 +23,17 @@
     </form>
   </div>
   @endforeach
-</div> --}}
+</div>
+
 <form action="{{route('apartments.update', $apartment->id)}}" method="post" enctype="multipart/form-data"
-  class="card col-sm-6 col-lg-6 mx-auto mb-4 pt-3 pb-3 mt-3">
+  class="card col-lg-6 mx-auto mb-4 pt-3 pb-3 mt-3">
   @csrf
   @method('PATCH')
   <label for="titolo">Titolo:</label>
   <input type="text" name="titolo" value="{{$apartment->titolo}}" placeholder="Inserisci il titolo">
   @if ($immaginiRimanenti != 0)
   @for ($i=$immaginiRimanenti; $i > 0; $i--) <label for="img{{$i+1}}">{{($i == 5)? 'Immagine di copertina' : 'Immagine'}}</label>
-    <input type="file" name="img{{$i+1}}" accept="image/*">
+    <input type="file" name="img{{$immaginiRimanenti-$i+1}}" accept="image/*">
     @endfor
     @else
     <label for="img">Immagine</label>
@@ -58,11 +58,13 @@
     <input type="number" name="mq" value="{{$apartment->mq}}" placeholder="Inserisci i metri Quadrati">
     {{-- fare check con algolia --}}
     <label for="indirizzo">Indirizzo:</label>
+    <input type="text" name="indirizzo2" class="form-control" value="{{$apartment->indirizzo}}" disabled/>
+    <input type="hidden" name="indirizzo" class="form-control" value="{{$apartment->indirizzo}}" />
 
-      <div id="app">
-        <input-edit-indirizzo >
+      {{-- <div id="app">
+        <input-edit-indirizzo v-bind:ind="{{$apartment->indirizzo}}">
       </input-edit-indirizzo>
-      </div>
+      </div> --}}
       <div class="mt-3">
        @foreach ($optionals as $optional)
          <div class="col-lg-4 pl-0">
@@ -73,19 +75,6 @@
       </div>
     <input type="submit" class="btn btn-primary" value="Salva">
 </form>
-<div class="card-deck mx-auto justify-content-center">
-  @foreach ($images as $img)
-  <div class="card col-lg-4">
-    <img class="img-fluid rounded mx-auto mt-3"
-      src="{{(substr($img->immagine,0,4)=='http') ?($img->immagine) : (asset('storage/'.$img->immagine))}}"
-      alt="{{$apartment->titolo}}">
-    <form action="{{ route('images.destroy', $img->id )}}" method="post" class="text-center">
-      @csrf
-      @method('DELETE')
-      <button type="submit" name="button" class="btn btn-alert btn-delete-alert text-danger">Delete</button>
-    </form>
-  </div>
-  @endforeach
-</div>
+
 
 @endsection

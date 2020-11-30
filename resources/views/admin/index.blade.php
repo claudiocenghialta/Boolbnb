@@ -38,4 +38,8 @@
     @endforeach
   </tbody>
 </table>
+<div class="text-center mt-5">
+  <button type="button" class="btn btn-primary mx-auto offset-lg-4" name="button"><a class="text-light" href="{{ route('apartments.create')}}">Aggiungi appartamento</a></button>
+</div>
+
   @endsection

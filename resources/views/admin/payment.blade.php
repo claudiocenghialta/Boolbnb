@@ -21,7 +21,7 @@
     @method("POST")
       <section>
           <label for="amount">
-              <span class="input-label">Amount</span>
+              <span class="input-label">Importo</span>
               <div class="input-wrapper amount-wrapper">
                   <input id="amount" name="amount" type="tel" min="1" placeholder="amount" value="{{$data['costo']}}" disabled>
                   <input type="hidden" name="apartment_id" value="{{$data['apartment_id']}}">
@@ -36,7 +36,7 @@
       </section>
 
       <input id="nonce" name="payment_method_nonce" type="hidden" />
-      <button class="button" type="submit"><span>Test Transaction</span></button>
+      <button class="button btn btn-lg btn-primary" type="submit"><span>Acquista</span></button>
   </form>
 </div>
 

@@ -8598,14 +8598,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['ind'],
   data: function data() {
     return {
       latitude: '',
-      longitude: '',
-      ind: ''
+      longitude: ''
     };
   },
   mounted: function mounted() {
+    console.log(ind);
+
     var places = __webpack_require__(/*! places.js */ "./node_modules/places.js/index.js");
 
     var self = this;
@@ -105037,7 +105039,7 @@ function ricerca() {
     },
     success: function success(risposta) {
       if (risposta.length == 0) {
-        $('.elenco').html("<div class=\"mt-5\"><h3>Nessun risultato!</h3></div>");
+        $('.elenco').html("<div class=\"ml-5 mt-5\"><h3>Nessun risultato!</h3></div>");
       }
 
       var source = $("#entry-template").html();
