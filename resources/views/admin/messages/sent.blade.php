@@ -2,12 +2,12 @@
 
 @section('content')
 
-<table class="table container">
-  <thead class="thead-dark">
+<table class="table container mt-3 col-8">
+  <thead class="thead-light bg-primary text-light">
     <tr>
       <th scope="col">Appartamento</th>
       <th scope="col">Messaggio</th>
-      <th scope="col">Mail Proprietario</th>
+      <th scope="col">E-mail proprietario</th>
       <th scope="col">Inviato il</th>
     </tr>
   </thead>

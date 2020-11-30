@@ -2,10 +2,11 @@
 
 
 .searchbar{
-    position: relative;
-    left: 0;
-    top: 0;
+    // position: relative;
+    // left: 0;
+    // top: 0;
     float: left;
+    // flex: 1 1 100%;
 
     border-radius: 5px;
     padding: 20px 0px;
@@ -37,7 +38,7 @@
         }
         .searchbar-dx{
 
-            margin-top: 30px;
+            // margin-top: 30px;
             .sb-dx{
                 width: 100%;
                 label{

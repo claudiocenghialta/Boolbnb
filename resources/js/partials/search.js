@@ -1,6 +1,17 @@
-var $ = require('jquery');
+var $ = require("jquery");
 const Handlebars = require("handlebars");
-$(document).ready(function(){
+$(document).ready(function() {
+    $("#cerca").on("click", function() {
+        $(".elenco").empty();
+        var clat = $("#c-lat").val();
+        var clng = $("#c-lng").val();
+        if ($("#inputMap").val() == "") {
+            $("#controllerLat").val(clat);
+            $("#controllerLng").val(clng);
+        } else {
+            var clat = $("#lat").val();
+            var clng = $("#lng").val();
+        }
 
 $("#cerca").on('click', function() {
     ricerca();
@@ -45,37 +56,38 @@ function ricerca(){
         {
             url: "http://localhost:8000/api/search",
             method: "GET",
-            data:{
-                numero_stanze: $('#numero_stanze').val(),
-                numero_letti: $('#numero_letti').val(),
-                numero_bagni: $('#numero_bagni').val(),
+            data: {
+                numero_stanze: $("#numero_stanze").val(),
+                numero_letti: $("#numero_letti").val(),
+                numero_bagni: $("#numero_bagni").val(),
                 optionals: optionals,
                 raggioKm: distanza,
                 lat: clat,
-                lng: clng,
+                lng: clng
             },
 
             success: function(risposta) {
-                var source = $('#entry-template').html();
+                var source = $("#entry-template").html();
 
                 var template = Handlebars.compile(source);
 
-                $.each(risposta,function(i,apartment) {
+                $.each(risposta, function(i, apartment) {
                     var data = new Date(Date.parse(apartment.updated_at));
 
                     if (apartment.immagini[0] == null) {
-                        var img = 'placeholders/placeholder-apartment.jpg';
+                        var img = "placeholders/placeholder-apartment.jpg";
                     } else {
-                        if (apartment.immagini[0].substr(0,4)=='http') {
+                        if (apartment.immagini[0].substr(0, 4) == "http") {
                             var img = apartment.immagini[0];
                         } else {
-                            var img = 'storage/'+ apartment.immagini[0];
+                            var img = "storage/" + apartment.immagini[0];
                         }
                     }
 
-                    var op = '';
+                    var op = "";
 
-                    var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
+                    var opt =
+                        '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
                        op += opt + apartment.optionals[y] + "</span></div>";
                    }
@@ -94,10 +106,11 @@ function ricerca(){
                     $('.elenco').append(html);
                 });
             },
-            error: function () {
-            alert("E' avvenuto un errore");
+            error: function() {
+                alert("E' avvenuto un errore");
             }
-        }
+        });
+    });
 
     );
 }

@@ -104327,12 +104327,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-Vue.component('map-show', __webpack_require__(/*! ./components/MapShow.vue */ "./resources/js/components/MapShow.vue")["default"]);
-Vue.component('input-create-indirizzo', __webpack_require__(/*! ./components/InputCreateIndirizzo.vue */ "./resources/js/components/InputCreateIndirizzo.vue")["default"]);
-Vue.component('input-edit-indirizzo', __webpack_require__(/*! ./components/InputEditIndirizzo.vue */ "./resources/js/components/InputEditIndirizzo.vue")["default"]);
-Vue.component('input-search-indirizzo', __webpack_require__(/*! ./components/InputSearchIndirizzo.vue */ "./resources/js/components/InputSearchIndirizzo.vue")["default"]);
-Vue.component('prova', __webpack_require__(/*! ./components/Prova.vue */ "./resources/js/components/Prova.vue")["default"]);
+Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component("map-show", __webpack_require__(/*! ./components/MapShow.vue */ "./resources/js/components/MapShow.vue")["default"]);
+Vue.component("input-create-indirizzo", __webpack_require__(/*! ./components/InputCreateIndirizzo.vue */ "./resources/js/components/InputCreateIndirizzo.vue")["default"]);
+Vue.component("input-edit-indirizzo", __webpack_require__(/*! ./components/InputEditIndirizzo.vue */ "./resources/js/components/InputEditIndirizzo.vue")["default"]);
+Vue.component("input-search-indirizzo", __webpack_require__(/*! ./components/InputSearchIndirizzo.vue */ "./resources/js/components/InputSearchIndirizzo.vue")["default"]);
+Vue.component("prova", __webpack_require__(/*! ./components/Prova.vue */ "./resources/js/components/Prova.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
