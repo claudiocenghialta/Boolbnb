@@ -57,7 +57,7 @@
   <div class="row no-gutters">
     <div class="col-md-4 pt-3">
       @if (empty($user->avatar))
-        <div class="rounded-circle" style="max-height: 25px; max-width:25px">
+        <div class="rounded-circle">
           <img class="img-fluid rounded mx-auto card-img-top" src="{{asset('placeholders/placeholder_avatar.svg')}}" alt="avatar">
         </div>
       @else
