@@ -11114,6 +11114,12 @@ section#cities .card.card-welcome .card-img-top {
   min-width: 300px;
 }
 
+footer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 footer .footer-top {
   border-bottom: 1px solid white;
 }

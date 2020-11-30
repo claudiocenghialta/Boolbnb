@@ -1,15 +1,15 @@
 <footer class="text-center mt-5">
-    <div class="row footer-top bg-success pt-2 pb-2">
+    <div class="footer-top bg-success pt-2 pb-2">
         <div class="container text-white d-flex flex-wrap justify-content-around">
             <div class="footer-link mr-4"><a class="" href="/">Come Funziona</a></div>
             <div class="footer-link mr-4"><a class="" href="/">Diventa un host</a></div>
             <div class="footer-link mr-4"><a class="" href="/">Sponsorizza un alloggio</a></div>
             <div class="footer-link mr-4"><a class="" href="/">Faq</a></div>
             <div class="footer-link mr-4"><a class="" href="/">Lavora con noi</a></div>
-            <div class="footer-link mr-4"><a class="" href="/">Invita un amico</a></div>
+            <div class="footer-link"><a class="" href="/">Invita un amico</a></div>
         </div>
     </div>
-    <div class="row footer-bottom bg-primary pt-5 pb-5">
+    <div class="footer-bottom bg-primary pt-5 pb-5">
         <div class="container text-white d-flex flex-wrap align-items-center">
             <div class="logo-footer">
                 <a class="text-success" class="navbar-brand text-success" href="{{ url('/') }}">
@@ -31,7 +31,7 @@
                 <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/Ivan1005"><i
                             class="fab fa-github mr-2"></i>Ivan
                         Mattera</a></p>
-                <p class="mr-3 mt-3"><a class="text-white" href="https://github.com/RiccardoP41"><i
+                <p class="mt-3"><a class="text-white" href="https://github.com/RiccardoP41"><i
                             class="fab fa-github mr-2"></i>Riccardo
                         Pasini</a></p>
             </div>

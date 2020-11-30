@@ -46,7 +46,7 @@
 </head>
 
 <body>
-    {{-- <div id="appi"> --}}
+    {{-- <div class="row"> --}}
         @include('layouts.partials.navbar')
 
         <main>
