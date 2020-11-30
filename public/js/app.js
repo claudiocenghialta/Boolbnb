@@ -105027,32 +105027,32 @@ function ricerca() {
     url: "http://localhost:8000/api/search",
     method: "GET",
     data: {
-      numero_stanze: $('#numero_stanze').val(),
-      numero_letti: $('#numero_letti').val(),
-      numero_bagni: $('#numero_bagni').val(),
+      numero_stanze: $("#numero_stanze").val(),
+      numero_letti: $("#numero_letti").val(),
+      numero_bagni: $("#numero_bagni").val(),
       optionals: optionals,
       raggioKm: distanza,
       lat: clat,
       lng: clng
     },
     success: function success(risposta) {
-      var source = $('#entry-template').html();
+      var source = $("#entry-template").html();
       var template = Handlebars.compile(source);
       $.each(risposta, function (i, apartment) {
         var data = new Date(Date.parse(apartment.updated_at));
 
         if (apartment.immagini[0] == null) {
-          var img = 'placeholders/placeholder-apartment.jpg';
+          var img = "placeholders/placeholder-apartment.jpg";
         } else {
-          if (apartment.immagini[0].substr(0, 4) == 'http') {
+          if (apartment.immagini[0].substr(0, 4) == "http") {
             var img = apartment.immagini[0];
           } else {
-            var img = 'storage/' + apartment.immagini[0];
+            var img = "storage/" + apartment.immagini[0];
           }
         }
 
-        var op = '';
-        var opt = '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
+        var op = "";
+        var opt = '<div class="b"><i class="fas fa-check text-success"></i> <span class="optional">';
 
         for (var y = 0; y < apartment.optionals.length; y++) {
           op += opt + apartment.optionals[y] + "</span></div>";
@@ -105078,6 +105078,8 @@ function ricerca() {
   });
 }
 
+;
+
 /***/ }),
 
 /***/ "./resources/sass/app.scss":
@@ -105098,8 +105100,8 @@ function ricerca() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/dati/playground/Boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\boolean\mamp_public\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

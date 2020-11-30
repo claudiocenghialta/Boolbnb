@@ -75,7 +75,7 @@
                     <div class="optional-div mb-2">
                         @foreach ($optionals as $optional)
                         <div class="b" {{($apartment->optionals->contains($optional->id) ? '' : 'hidden')}}>
-                            <i class="fas fa-check text-info"></i>
+                            <i class="fas fa-check text-success"></i>
                             <span class="optional">{{$optional->nome}}</span>
                         </div>
                         @endforeach

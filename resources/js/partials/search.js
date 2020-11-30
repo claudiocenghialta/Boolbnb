@@ -1,28 +1,18 @@
 var $ = require("jquery");
 const Handlebars = require("handlebars");
 $(document).ready(function() {
-    $("#cerca").on("click", function() {
-        $(".elenco").empty();
-        var clat = $("#c-lat").val();
-        var clng = $("#c-lng").val();
-        if ($("#inputMap").val() == "") {
-            $("#controllerLat").val(clat);
-            $("#controllerLng").val(clng);
-        } else {
-            var clat = $("#lat").val();
-            var clng = $("#lng").val();
-        }
 
-$("#cerca").on('click', function() {
-    ricerca();
-} )
 
-$("input").on('keydown', function() {
-    if ( event.which == 13 || event.keycode == 13){
-    ricerca();
-    }
-} )
 
+        $("#cerca").on('click', function() {
+            ricerca();
+        } )
+
+        $("input").on('keydown', function() {
+            if ( event.which == 13 || event.keycode == 13){
+            ricerca();
+            }
+        } )
 
 
 });
@@ -87,7 +77,7 @@ function ricerca(){
                     var op = "";
 
                     var opt =
-                        '<div class="b"><i class="fas fa-check text-info"></i> <span class="optional">';
+                        '<div class="b"><i class="fas fa-check text-success"></i> <span class="optional">';
                     for (var y = 0; y < apartment.optionals.length; y++) {
                        op += opt + apartment.optionals[y] + "</span></div>";
                    }
@@ -110,7 +100,4 @@ function ricerca(){
                 alert("E' avvenuto un errore");
             }
         });
-    });
-
-    );
-}
+    };
