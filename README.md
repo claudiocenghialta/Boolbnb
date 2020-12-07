@@ -1,5 +1,5 @@
 # Replica delle funzionalità di AirBnB
-Per realizzare questo sito abbiamo utilizzato:
+### Per realizzare questo sito abbiamo utilizzato:
     - Laravel
     - PHP
     - Javascript
@@ -7,7 +7,7 @@ Per realizzare questo sito abbiamo utilizzato:
     - HTML
     - CSS
     - Bootstrap
-    - Chart.js
+    - Chart.js (creazione grafici per statistiche)
     - Braintree (gestione pagamenti)
     - Algolia (ricerca per località e mappe interattive)
 
