@@ -36,3 +36,8 @@
             - gli appartamenti sponsorizzati vengono mostrati in evidenza nella homepage del sito, e vengono mostrati per primi nei risultati delle ricerche effettuate dagli utenti
         - Possibilità di personalizzare il proprio profilo utente con avatar e informazioni aggiuntive, oltre possibilità di cancellarsi con conseguente cancellazione dei propri dati utente, dei suoi appartamenti ed eliminazione di tutte le immagini relative dallo storage.
             
+### Preview funzionalità utente 
+![Preview utente](Boolbnb-non-loggato.gif?raw=true "BoolBnb utente")
+
+### Preview funzionalità proprietario appartamenti
+![Preview host](Boolbnb-host.gif?raw=true "BoolBnb host")
