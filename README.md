@@ -1,4 +1,4 @@
-# Replica delle funzionalità di AriBnB
+# Replica delle funzionalità di AirBnB
 Per realizzare questo sito abbiamo utilizzato:
     - Laravel
     - PHP
